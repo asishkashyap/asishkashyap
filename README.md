@@ -13,6 +13,8 @@
 
 - 📫 How to reach me **kashyapashish29@gmail.com**
 
+- 📄 Know about my experiences [https://drive.google.com/file/d/1vJLk-BikfuMl_NMuIHjIL_AfcU6FyOT1/view?usp=sharing](https://drive.google.com/file/d/1vJLk-BikfuMl_NMuIHjIL_AfcU6FyOT1/view?usp=sharing)
+
 - ⚡ Fun fact **I am funny**
 
 <h3 align="left">Connect with me:</h3>
