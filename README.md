@@ -1,4 +1,4 @@
-![MasterHead](https://proeffico.com/wp-content/uploads/2023/10/devOps-cloud-native-2.gi)
+![MasterHead](https://proeffico.com/wp-content/uploads/2023/10/devOps-cloud-native-2.gif)
 <h1 align="center">Hi 👋, I'm Asish Kashyap</h1>
 <h3 align="center">A passionate DevOps Engineer</h3>
 <img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/730703/screenshots/6581243/avento.gif"
