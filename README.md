@@ -1,7 +1,7 @@
-[![MasterHead](https://proeffico.com/wp-content/uploads/2023/10/devOps-cloud-native-2.gif)]
+![MasterHead](https://proeffico.com/wp-content/uploads/2023/10/devOps-cloud-native-2.gi)
 <h1 align="center">Hi 👋, I'm Asish Kashyap</h1>
 <h3 align="center">A passionate DevOps Engineer</h3>
-<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"
+<img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/730703/screenshots/6581243/avento.gif"
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=asishkashyap&label=Profile%20views&color=0e75b6&style=flat" alt="asishkashyap" /> </p>
 
