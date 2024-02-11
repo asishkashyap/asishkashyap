@@ -1,4 +1,4 @@
-![MasterHead](https://www.contrastsecurity.com/hs-fs/hubfs/images/DevOps%20Solutions/devops-old-way.gif?width=1322&name=devops-old-way.gif)
+![MasterHead](https://liveimages.algoworks.com/new-algoworks/wp-content/uploads/2022/06/28161925/DevOps-min.gif)
 <h1 align="center">Hi 👋, I'm Asish Kashyap</h1>
 <h3 align="center">A passionate DevOps Engineer</h3>
 <img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/730703/screenshots/6581243/avento.gif"
