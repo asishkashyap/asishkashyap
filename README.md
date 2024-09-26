@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/erashish92" target="blank"><img src="https://img.shields.io/twitter/follow/erashish92?logo=twitter&style=for-the-badge" alt="erashish92" /></a> </p>
 
-- 🌱 I’m currently learning **DevSecOps, Azure Cloud**
+- 🌱 I’m currently learning **Generative AI, DevSecOps**
 
 - 💬 Ask me about **Azure DevOps**
 
