@@ -1,0 +1,27 @@
+name: Broken Link Checker
+
+on:
+  schedule:
+    # Run weekly on Monday morning
+    - cron: "0 8 * * 1"
+  push:
+    branches: [ main, feature/github-branding-kit ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  link-checker:
+    name: Check Markdown Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lychee Broken Link Checker
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          args: --verbose --no-progress './README.md' './docs/**/*.md'
+          fail: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

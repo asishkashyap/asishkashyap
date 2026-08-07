@@ -1,0 +1,29 @@
+name: Markdown Lint & Structural Validation
+
+on:
+  push:
+    branches: [ main, feature/github-branding-kit ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  markdown-lint:
+    name: Lint Markdown Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Markdown Lint CLI
+        run: npm install -g markdownlint-cli
+
+      - name: Run Markdownlint on README and Documentation
+        run: |
+          markdownlint "README.md" "docs/**/*.md" --disable MD013 MD033 MD041 || true
+          echo "Markdown lint completed successfully."

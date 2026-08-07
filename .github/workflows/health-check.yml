@@ -1,0 +1,66 @@
+name: Repository Health & Scheduled Maintenance
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: "0 0 * * *"
+  push:
+    branches: [ main, feature/github-branding-kit ]
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    name: Repository & Profile Health Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate README & SVG Asset Integrity
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+
+            console.log("Checking README.md existence...");
+            if (!fs.existsSync("README.md")) {
+              console.error("FATAL: README.md missing!");
+              process.exit(1);
+            }
+
+            console.log("Auditing SVG Assets directory...");
+            const assetsDir = "./assets";
+            if (!fs.existsSync(assetsDir)) {
+              console.error("FATAL: assets directory missing!");
+              process.exit(1);
+            }
+
+            const svgs = fs.readdirSync(assetsDir).filter(f => f.endsWith(".svg"));
+            console.log(`Found ${svgs.length} SVG assets.`);
+            for (const svg of svgs) {
+              const content = fs.readFileSync(path.join(assetsDir, svg), "utf8");
+              if (!content.includes("<svg")) {
+                console.error(`FATAL: Corrupted SVG asset ${svg}`);
+                process.exit(1);
+              }
+            }
+
+            console.log("Auditing Repository Documentation directory...");
+            const docsDir = "./docs/repositories";
+            if (fs.existsSync(docsDir)) {
+              const docs = fs.readdirSync(docsDir).filter(f => f.endsWith(".md"));
+              console.log(`Found ${docs.length} showcase documentation files.`);
+            }
+
+            console.log("Repository Health Audit Completed Successfully!");
+          '
+
+      - name: Verify Application Build
+        run: |
+          npm ci || npm install
+          npm run build
