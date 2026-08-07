@@ -179,6 +179,14 @@ ${config.showFeaturedRepos ? `## 🚀 Featured Open Source Repositories & Monore
 
 <br />
 
+<div align="center">
+  <img src="./assets/platform.svg" alt="Zero-Trust Platform Architecture" width="100%" />
+  <br /><br />
+  <img src="./assets/devops.svg" alt="Continuous DevSecOps Pipeline" width="100%" />
+</div>
+
+<br />
+
 ### 1. Immutable Infrastructure & GitOps
 All infrastructure state is codified in Terraform monorepos (\`terraform-azure-enterprise\`). State modifications require peer-reviewed Pull Requests validated by \`tflint\`, \`checkov\`, and dry-run \`terraform plan\` executions via Azure OIDC.
 
