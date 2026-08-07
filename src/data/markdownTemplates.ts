@@ -49,7 +49,7 @@ ${badges.join(' ')}
   return `<div align="center">
 
 <!-- Hero Banner Vector SVG -->
-<img src="./assets/banner.svg" alt="${config.fullName} - ${config.title}" width="100%" />
+<img src="https://raw.githubusercontent.com/${config.username}/${config.username}/main/assets/banner.svg" alt="${config.fullName} - ${config.title}" width="100%" />
 
 <br />
 
@@ -215,10 +215,10 @@ Operational logs and metric streams are analyzed by event-driven serverless work
 
 <div align="center">
 
-${config.showStatsCard ? `<img src="https://github-readme-stats.vercel.app/api?username=${config.username}&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&text_color=f0f6fc&icon_color=58a6ff&title_color=58a6ff" alt="GitHub Stats" width="49%" />` : ''}
+${config.showStatsCard ? `<img src="https://github-readme-stats.vercel.app/api?username=${config.username}&show_icons=true&theme=github_dark&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" width="49%" />` : ''}
 ${config.showStreakCard ? `<img src="https://github-readme-streak-stats.herokuapp.com/?user=${config.username}&theme=dark&hide_border=true&background=0d1117&stroke=58a6ff&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff" alt="GitHub Streak" width="49%" />` : ''}
 
-${config.showTopLangs ? `<br/><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${config.username}&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&text_color=f0f6fc&title_color=58a6ff" alt="Top Languages" width="60%" />` : ''}
+${config.showTopLangs ? `<br/><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${config.username}&layout=compact&theme=github_dark&hide_border=true" alt="Top Languages" width="60%" />` : ''}
 
 </div>
 
