@@ -58,14 +58,14 @@ export const SVG_ASSETS: SvgAssetInfo[] = [
   </g>
 
   <!-- Content Block -->
-  <g transform="translate(60, 75)">
-    <rect x="0" y="0" width="220" height="28" rx="14" fill="${theme.cardBg}" stroke="${theme.cardBorder}" stroke-width="1" />
-    <circle cx="14" cy="14" r="4" fill="#3fb950" />
-    <text x="28" y="18" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" fill="${theme.textSecondary}">DEVSECOPS &amp; AI SRE</text>
+  <g transform="translate(60, 42)">
+    <rect x="0" y="0" width="240" height="32" rx="16" fill="${theme.cardBg}" stroke="${theme.cardBorder}" stroke-width="1" />
+    <circle cx="16" cy="16" r="5" fill="#3fb950" />
+    <text x="32" y="21" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="${theme.textSecondary}">DEVSECOPS &amp; AI SRE</text>
 
-    <text x="0" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="42" fill="${theme.textPrimary}">${cleanName}</text>
-    <text x="0" y="105" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="18" fill="${theme.accent}">${cleanTitle}</text>
-    <text x="0" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="14" fill="${theme.textSecondary}">${cleanTagline}</text>
+    <text x="0" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="54" fill="${theme.textPrimary}">${cleanName}</text>
+    <text x="0" y="122" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="24" fill="${theme.accent}">${cleanTitle}</text>
+    <text x="0" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="17" fill="${theme.textSecondary}">${cleanTagline}</text>
   </g>
 </svg>`;
     },
