@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/asishkashyap/asishkashyap/main/assets/banner.svg?v=3" alt="DevSecOps & AI Engineer Banner" width="100%" />
+  <img src="assets/banner.svg" alt="DevSecOps & AI Engineer Banner" width="100%" />
 
   <br />
 
