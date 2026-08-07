@@ -5,11 +5,11 @@
   <br />
 
   <h1>👋 Hi, I'm Asish Kashyap</h1>
-  <p><strong>Senior DevOps & Platform Engineer</strong></p>
+  <p><strong>Senior DevSecOps &amp; AI Engineer</strong></p>
 
   <p>
     <a href="https://github.com/asishkashyap"><img src="https://img.shields.io/github/followers/asishkashyap?style=for-the-badge&color=58a6ff&labelColor=161b22&logo=github" alt="GitHub Followers" /></a>
-    <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn-Connect-58a6ff?style=for-the-badge&color=58a6ff&labelColor=161b22&logo=linkedin" alt="LinkedIn" /></a>
+    <a href="https://www.linkedin.com/in/asish-kashyap-23631115"><img src="https://img.shields.io/badge/LinkedIn-Connect-58a6ff?style=for-the-badge&color=58a6ff&labelColor=161b22&logo=linkedin" alt="LinkedIn" /></a>
     <a href="mailto:kashyapashish29@gmail.com"><img src="https://img.shields.io/badge/Email-Contact_Me-58a6ff?style=for-the-badge&color=58a6ff&labelColor=161b22&logo=gmail" alt="Email" /></a>
   </p>
 
