@@ -35,7 +35,7 @@
 
 ---
 
-## ⚡ Currently Working On
+## ⚡ Currently Working As
 
 - 🚀 **Internal Developer Platforms (IDP)**
 - 🤖 **AI-powered DevOps & Auto SRE**
@@ -53,16 +53,6 @@
 - ⚙️ Automating deployments using **GitHub Actions**
 - 📦 Creating reusable CI/CD pipeline templates
 - 📚 Teaching Azure DevOps, GitHub Actions, and Terraform
-
----
-
-## 🛠️ Detailed Tech Stack
-
-- **Cloud:** Azure
-- **Containers:** Docker • Kubernetes • AKS • Helm • ArgoCD • Crossplane
-- **CI/CD:** GitHub Actions • Azure DevOps • Terraform • Git
-- **Security:** SonarQube • Trivy • tfsec • RBAC
-- **Programming:** Python • PowerShell • Bash
 
 ---
 
