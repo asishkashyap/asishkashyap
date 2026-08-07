@@ -20,9 +20,17 @@
 ## 💻 Tech Stack & Shields
 
 <div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=ts,js,py,go,rust,cpp,postgres,k8s,docker,aws,terraform,githubactions,pytorch,react,nodejs,express,nextjs,tailwind,graphql&theme=dark&perline=10" alt="My Tech Stack" />
-  </a>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Azure_Cloud-0089D6?style=for-the-badge&logo=microsoftazure&logoColor=white" alt="Azure Cloud" />
+  <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" />
+  <br />
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white" alt="PowerShell" />
+  <img src="https://img.shields.io/badge/DevSecOps-161b22?style=for-the-badge&logo=shield&logoColor=58a6ff" alt="DevSecOps" />
+  <img src="https://img.shields.io/badge/Pipelines-2088FF?style=for-the-badge&logo=azurepipelines&logoColor=white" alt="Pipelines" />
+  <img src="https://img.shields.io/badge/AI_Models-8E75FF?style=for-the-badge&logo=openai&logoColor=white" alt="AI Models" />
 </div>
 
 ---
