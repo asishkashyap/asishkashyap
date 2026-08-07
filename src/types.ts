@@ -19,7 +19,7 @@ export interface TechBadge {
   logo: string;
   logoColor: string;
   bgColor: string;
-  category: 'Frontend' | 'Backend' | 'Cloud & DevOps' | 'AI & ML' | 'Databases' | 'Tools';
+  category: 'Cloud Native & DevOps' | 'AI Systems & Backend' | 'Security, Databases & Tooling' | 'Frontend' | 'Backend' | 'Cloud & DevOps' | 'AI & ML' | 'Databases' | 'Tools';
 }
 
 export interface FeaturedRepository {

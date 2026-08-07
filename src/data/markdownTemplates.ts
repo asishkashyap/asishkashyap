@@ -4,16 +4,27 @@ import { THEMES, TECH_STACK } from './profileData';
 export function generateMainReadme(config: ProfileConfig): string {
   const theme = THEMES[config.theme] || THEMES.darkSlate;
   
-  // Build badges markdown
-  const badgesList = config.selectedTechStack.map(techName => {
+  // Group badges by category
+  const categorized: Record<string, string[]> = {};
+  config.selectedTechStack.forEach(techName => {
     const item = TECH_STACK.find(t => t.name.toLowerCase() === techName.toLowerCase()) || {
       name: techName,
-      logo: techName.toLowerCase().replace(/[^a-z0-0]/g, ''),
+      logo: techName.toLowerCase().replace(/[^a-z0-9]/g, ''),
       logoColor: 'white',
-      bgColor: '0d1117'
+      bgColor: '0d1117',
+      category: 'Tools'
     };
-    return `![${item.name}](https://img.shields.io/badge/${encodeURIComponent(item.name)}-${item.bgColor}?style=for-the-badge&logo=${item.logo}&logoColor=${item.logoColor})`;
-  }).join(' ');
+    const cat = item.category || 'Tools';
+    if (!categorized[cat]) categorized[cat] = [];
+    categorized[cat].push(`![${item.name}](https://img.shields.io/badge/${encodeURIComponent(item.name)}-${item.bgColor}?style=for-the-badge&logo=${item.logo}&logoColor=${item.logoColor})`);
+  });
+
+  const badgesSection = Object.entries(categorized).map(([cat, badges]) => `
+### 🔸 ${cat}
+<div align="center">
+${badges.join(' ')}
+</div>
+`).join('\n');
 
   // Repositories section
   const reposMarkdown = config.repositories.map(repo => `
@@ -53,18 +64,18 @@ $ asish --get-bio
 > Location: ${config.location}
 > Current Role: ${config.company}
 
-$ ashish --list-passions
-[✓] High-throughput Distributed Systems
-[✓] Cloud Native Platform & Kubernetes Control Planes
+$ asish --list-passions
+[✓] High-throughput Distributed Systems & Platform Engineering
+[✓] Cloud Native & Kubernetes Control Planes (EKS / AKS)
+[✓] DevSecOps, Shift-Left Security & Terraform Infrastructure as Code
 [✓] Autonomous AI Agent Workflows & LLM RAG Engines
-[✓] Developer Experience & Clean Architecture
 \`\`\`
 
 ---
 
 ## 🛠️ Technology Stack & Ecosystem
 
-${badgesList}
+${badgesSection}
 
 ---
 
@@ -84,11 +95,13 @@ ${config.showTopLangs ? `<br/><img src="https://github-readme-stats.vercel.app/a
 ${config.showSnakeAnimation ? `
 ### 🐍 Contribution Graph Eat-the-Grid Snake
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake.svg">
-</picture>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake.svg" />
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/${config.username}/${config.username}/output/github-contribution-grid-snake.svg" width="100%" />
+  </picture>
+</div>
 ` : ''}
 
 ---
@@ -135,7 +148,7 @@ export function generateCustomizationDoc(): string {
   return `# ⚙️ GitHub Profile Customization Guide
 
 ## Quick Start
-1. Create a repository with the exact same name as your GitHub username: \`kashyapashish29/kashyapashish29\`.
+1. Create a repository with the exact same name as your GitHub username: \`asishkashyap/asishkashyap\`.
 2. Commit the generated \`README.md\` to the root of your repository.
 3. Upload all vector SVGs into the \`assets/\` directory.
 4. Push the \`.github/workflows/\` directory to enable automated snake animations and metrics generation.
