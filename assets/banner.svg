@@ -1,102 +1,146 @@
-<svg fill="none" viewBox="0 0 980 240" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes pulseGlow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        .container {
-          width: 980px;
-          height: 240px;
-          background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #050811 100%);
-          border-radius: 16px;
-          border: 1px solid #30363d;
-          box-sizing: border-box;
-          padding: 32px 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        .glow-orb {
-          position: absolute;
-          right: -40px;
-          top: -40px;
-          width: 320px;
-          height: 320px;
-          background: radial-gradient(circle, #58a6ff 0%, transparent 70%);
-          animation: pulseGlow 6s ease-in-out infinite;
-          pointer-events: none;
-        }
-        .grid-overlay {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(#30363d 1px, transparent 1px);
-          background-size: 24px 24px;
-          opacity: 0.25;
-        }
-        .title-gradient {
-          font-size: 32px;
-          font-weight: 800;
-          background: linear-gradient(90deg, #f0f6fc 0%, #58a6ff 50%, #ffffff 100%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradientMove 5s linear infinite;
-          margin: 0;
-          letter-spacing: -0.02em;
-        }
-        .subtitle {
-          font-size: 16px;
-          color: #8b949e;
-          margin-top: 8px;
-          font-weight: 500;
-        }
-        .badge-row {
-          display: flex;
-          gap: 12px;
-          margin-top: 20px;
-          align-items: center;
-        }
-        .pill {
-          background: #30363d;
-          color: #58a6ff;
-          border: 1px solid #58a6ff40;
-          padding: 6px 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-          font-family: "Fira Code", monospace;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-      </style>
+<svg width="100%" viewBox="0 0 980 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="50%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#080c14" />
+    </linearGradient>
 
-      <div class="container">
-        <div class="grid-overlay"></div>
-        <div class="glow-orb"></div>
-        <div style="position: relative; z-index: 2;">
-          <div style="font-family: 'Fira Code', monospace; color: #58a6ff; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
-            👋 HELLO WORLD // ASHISH KASHYAP
-          </div>
-          <h1 class="title-gradient">Ashish Kashyap</h1>
-          <p class="subtitle">Senior Full Stack &amp; Cloud Native Engineer — Building high-throughput systems, resilient platforms &amp; AI architectures</p>
-          <div class="badge-row">
-            <span class="pill">⚡ Systems Architecture</span>
-            <span class="pill">🤖 AI &amp; LLM Infrastructure</span>
-            <span class="pill">☁️ Cloud Native Platform</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </foreignObject>
+    <!-- Animated Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#58a6ff">
+        <animate attributeName="stop-color" values="#58a6ff;#bc8cff;#238636;#58a6ff" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#1f6feb">
+        <animate attributeName="stop-color" values="#1f6feb;#58a6ff;#bc8cff;#1f6feb" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Title Gradient -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f0f6fc">
+        <animate attributeName="stop-color" values="#f0f6fc;#58a6ff;#ffffff;#f0f6fc" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#58a6ff">
+        <animate attributeName="stop-color" values="#58a6ff;#bc8cff;#58a6ff" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#bc8cff">
+        <animate attributeName="stop-color" values="#bc8cff;#f0f6fc;#58a6ff;#bc8cff" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="dotGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#30363d" opacity="0.35" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulseOrb1 {
+      0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+      50% { transform: scale(1.2) translate(-10px, 10px); opacity: 0.65; }
+    }
+    @keyframes pulseOrb2 {
+      0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.25; }
+      50% { transform: scale(1.15) translate(10px, -10px); opacity: 0.55; }
+    }
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+      50% { transform: translateY(-16px) translateX(6px); opacity: 0.9; }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+      50% { transform: translateY(-22px) translateX(-8px); opacity: 0.85; }
+    }
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes badgePulse {
+      0%, 100% { stroke-opacity: 0.4; }
+      50% { stroke-opacity: 0.9; }
+    }
+
+    .orb1 { transform-origin: 820px 60px; animation: pulseOrb1 6s ease-in-out infinite; }
+    .orb2 { transform-origin: 860px 180px; animation: pulseOrb2 8s ease-in-out infinite 1s; }
+    .p1 { animation: float1 4s ease-in-out infinite; }
+    .p2 { animation: float2 5s ease-in-out infinite 1s; }
+    .p3 { animation: float1 6s ease-in-out infinite 2s; }
+    .cursor { animation: blinkCursor 1s step-end infinite; }
+    .badge-rect { animation: badgePulse 3s ease-in-out infinite; }
+
+    .main-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .sub-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      fill: #8b949e;
+    }
+    .mono-text {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+      font-weight: 600;
+      fill: #58a6ff;
+    }
+    .badge-text {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      fill: #c9d1d9;
+    }
+  </style>
+
+  <!-- Outer Card Container with Animated Border -->
+  <rect x="2" y="2" width="976" height="236" rx="16" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+
+  <!-- Grid Pattern Overlay -->
+  <rect x="2" y="2" width="976" height="236" rx="16" fill="url(#dotGrid)" />
+
+  <!-- Animated Glowing Orbs -->
+  <circle class="orb1" cx="820" cy="60" r="160" fill="#58a6ff" opacity="0.4" filter="url(#glow)" />
+  <circle class="orb2" cx="860" cy="180" r="130" fill="#bc8cff" opacity="0.3" filter="url(#glow)" />
+
+  <!-- Floating Particles -->
+  <circle class="p1" cx="720" cy="70" r="3" fill="#58a6ff" />
+  <circle class="p2" cx="850" cy="130" r="4" fill="#bc8cff" />
+  <circle class="p3" cx="640" cy="180" r="2.5" fill="#3fb950" />
+  <circle class="p1" cx="910" cy="80" r="2" fill="#58a6ff" />
+  <circle class="p2" cx="780" cy="190" r="3.5" fill="#f0883e" />
+
+  <!-- Eyebrow Tag -->
+  <text x="40" y="52" class="mono-text">👋 HELLO WORLD // ASHISH KASHYAP<tspan class="cursor">_</tspan></text>
+
+  <!-- Main Title with Gradient Fill -->
+  <text x="40" y="98" class="main-title" fill="url(#titleGrad)">Ashish Kashyap</text>
+
+  <!-- Subtitle -->
+  <text x="40" y="132" class="sub-title">Senior DevOps &amp; Platform Engineer — Building IDPs, Auto SRE &amp; Cloud Native Infrastructure</text>
+
+  <!-- Animated Badges -->
+  <g transform="translate(40, 158)">
+    <rect class="badge-rect" x="0" y="0" width="225" height="34" rx="17" fill="#161b22" stroke="#58a6ff" stroke-width="1.5" />
+    <text x="16" y="21" class="badge-text">⚡ Internal Dev Platforms</text>
+  </g>
+
+  <g transform="translate(277, 158)">
+    <rect class="badge-rect" x="0" y="0" width="225" height="34" rx="17" fill="#161b22" stroke="#bc8cff" stroke-width="1.5" />
+    <text x="16" y="21" class="badge-text">🤖 AI DevOps &amp; Auto SRE</text>
+  </g>
+
+  <g transform="translate(514, 158)">
+    <rect class="badge-rect" x="0" y="0" width="225" height="34" rx="17" fill="#161b22" stroke="#238636" stroke-width="1.5" />
+    <text x="16" y="21" class="badge-text">☸️ K8s Platform Eng</text>
+  </g>
 </svg>
