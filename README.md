@@ -5,7 +5,7 @@
   <br />
 
   <h1>👋 Hi, I'm Ashish Kashyap</h1>
-  <p><strong>Senior Full Stack & Systems Engineer</strong></p>
+  <p><strong>Senior DevOps & Platform Engineer</strong></p>
 
   <p>
     <a href="https://github.com/asishkashyap"><img src="https://img.shields.io/github/followers/asishkashyap?style=for-the-badge&color=58a6ff&labelColor=161b22&logo=github" alt="GitHub Followers" /></a>
@@ -32,6 +32,37 @@
   <img src="https://img.shields.io/badge/Pipelines-2088FF?style=for-the-badge&logo=azurepipelines&logoColor=white" alt="Pipelines" />
   <img src="https://img.shields.io/badge/AI_Models-8E75FF?style=for-the-badge&logo=openai&logoColor=white" alt="AI Models" />
 </div>
+
+---
+
+## ⚡ Currently Working On
+
+- 🚀 **Internal Developer Platforms (IDP)**
+- 🤖 **AI-powered DevOps & Auto SRE**
+- ☸️ **Kubernetes Platform Engineering**
+- ⚡ **GitHub Actions Automation**
+- 🔐 **DevSecOps & Shift-Left Security**
+- ☁️ **Azure Cloud Infrastructure**
+
+---
+
+## 🚀 What I'm Working On
+
+- 🌱 Learning **Generative AI**, **LLM Integrations**, **Platform Engineering**
+- 🔭 Building **AI-driven Kubernetes Auto SRE**
+- ⚙️ Automating deployments using **GitHub Actions**
+- 📦 Creating reusable CI/CD pipeline templates
+- 📚 Teaching Azure DevOps, GitHub Actions, and Terraform
+
+---
+
+## 🛠️ Detailed Tech Stack
+
+- **Cloud:** Azure
+- **Containers:** Docker • Kubernetes • AKS • Helm • ArgoCD • Crossplane
+- **CI/CD:** GitHub Actions • Azure DevOps • Terraform • Git
+- **Security:** SonarQube • Trivy • tfsec • RBAC
+- **Programming:** Python • PowerShell • Bash
 
 ---
 
