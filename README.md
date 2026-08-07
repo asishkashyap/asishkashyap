@@ -19,12 +19,11 @@
 
 ## 💻 Tech Stack & Shields
 
-```
-LANGUAGES      :: TypeScript / JavaScript / Go / Python / Rust / C++ / SQL
-CLOUD & DEVOPS :: Kubernetes / Docker / AWS / Terraform / Helm / Istio / CI/CD
-AI & LLMS      :: Gemini API / PyTorch / LangChain / Vector DBs / RAG Pipelines
-FRAMEWORKS     :: React / Node.js / Express / Next.js / Tailwind CSS / GraphQL
-```
+<div align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=ts,js,py,go,rust,cpp,postgres,k8s,docker,aws,terraform,githubactions,pytorch,react,nodejs,express,nextjs,tailwind,graphql&theme=dark&perline=10" alt="My Tech Stack" />
+  </a>
+</div>
 
 ---
 
