@@ -17,112 +17,56 @@ export const SVG_ASSETS: SvgAssetInfo[] = [
     description: 'Main brand header image with dynamic gradient mesh, particle effects, and title text.',
     generateSvg: (config: ProfileConfig) => {
       const theme = THEMES[config.theme] || THEMES.darkSlate;
-      return `<svg fill="none" viewBox="0 0 980 240" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes pulseGlow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        .container {
-          width: 980px;
-          height: 240px;
-          background: linear-gradient(135deg, ${theme.bg} 0%, ${theme.cardBg} 50%, #050811 100%);
-          border-radius: 16px;
-          border: 1px solid ${theme.cardBorder};
-          box-sizing: border-box;
-          padding: 32px 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        .glow-orb {
-          position: absolute;
-          right: -40px;
-          top: -40px;
-          width: 320px;
-          height: 320px;
-          background: radial-gradient(circle, ${theme.accent} 0%, transparent 70%);
-          animation: pulseGlow 6s ease-in-out infinite;
-          pointer-events: none;
-        }
-        .grid-overlay {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(${theme.cardBorder} 1px, transparent 1px);
-          background-size: 24px 24px;
-          opacity: 0.25;
-        }
-        .title-gradient {
-          font-size: 32px;
-          font-weight: 800;
-          background: linear-gradient(90deg, ${theme.textPrimary} 0%, ${theme.accent} 50%, #ffffff 100%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradientMove 5s linear infinite;
-          margin: 0;
-          letter-spacing: -0.02em;
-        }
-        .subtitle {
-          font-size: 16px;
-          color: ${theme.textSecondary};
-          margin-top: 8px;
-          font-weight: 500;
-          letter-spacing: 0.01em;
-        }
-        .badge-row {
-          display: flex;
-          gap: 12px;
-          margin-top: 20px;
-          align-items: center;
-        }
-        .pill {
-          background: ${theme.cardBorder};
-          color: ${theme.accent};
-          border: 1px solid ${theme.accent}40;
-          padding: 6px 14px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-          font-family: "Fira Code", monospace;
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-      </style>
+      const cleanName = config.fullName.toUpperCase().replace(/&/g, '&amp;');
+      const cleanTitle = config.title.replace(/&/g, '&amp;');
+      const cleanTagline = config.tagline.replace(/&/g, '&amp;');
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="100%" fill="none">
+  <defs>
+    <linearGradient id="bg-grad-dyn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${theme.bg}" />
+      <stop offset="50%" stop-color="${theme.cardBg}" />
+      <stop offset="100%" stop-color="#090d11" />
+    </linearGradient>
+    <linearGradient id="azure-grad-dyn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="${theme.accent}" />
+      <stop offset="100%" stop-color="#3FA4F6" />
+    </linearGradient>
+    <pattern id="grid-dyn" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="${theme.cardBorder}" stroke-width="0.5" stroke-opacity="0.3" />
+      <circle cx="40" cy="40" r="1" fill="${theme.accent}" fill-opacity="0.2" />
+    </pattern>
+    <filter id="glow-dyn" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
 
-      <div class="container">
-        <div class="grid-overlay"></div>
-        <div class="glow-orb"></div>
-        <div style="position: relative; z-index: 2;">
-          <div style="font-family: 'Fira Code', monospace; color: ${theme.accent}; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
-            👋 HELLO WORLD // ${config.username.toUpperCase()}
-          </div>
-          <h1 class="title-gradient">${config.fullName}</h1>
-          <p class="subtitle">${config.title} — ${config.tagline}</p>
-          <div class="badge-row">
-            <span class="pill">⚡ Systems Architecture</span>
-            <span class="pill">🤖 AI & LLM Infrastructure</span>
-            <span class="pill">☁️ Cloud Native Platform</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </foreignObject>
+  <!-- Background -->
+  <rect width="1200" height="300" rx="12" fill="url(#bg-grad-dyn)" stroke="${theme.cardBorder}" stroke-width="1" />
+  <rect width="1200" height="300" rx="12" fill="url(#grid-dyn)" />
+  <rect x="0" y="0" width="1200" height="4" rx="2" fill="url(#azure-grad-dyn)" />
+
+  <!-- Orbit Nodes Right Side -->
+  <g transform="translate(1020, 150)" stroke="${theme.accent}" stroke-opacity="0.3" fill="none">
+    <circle cx="0" cy="0" r="80" stroke-width="1" stroke-dasharray="4, 6" />
+    <circle cx="0" cy="0" r="110" stroke-width="1.5" stroke-dasharray="12, 8" />
+  </g>
+  <g transform="translate(1020, 150)">
+    <rect x="-35" y="-35" width="70" height="70" rx="16" fill="${theme.cardBg}" stroke="${theme.accent}" stroke-width="2" filter="url(#glow-dyn)" />
+    <path d="M 0 -18 L 16 -8 L 16 12 L 0 20 L -16 12 L -16 -8 Z" fill="none" stroke="${theme.accent}" stroke-width="2" />
+    <circle cx="0" cy="1" r="5" fill="#3fb950" />
+  </g>
+
+  <!-- Content Block -->
+  <g transform="translate(60, 75)">
+    <rect x="0" y="0" width="220" height="28" rx="14" fill="${theme.cardBg}" stroke="${theme.cardBorder}" stroke-width="1" />
+    <circle cx="14" cy="14" r="4" fill="#3fb950" />
+    <text x="28" y="18" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" fill="${theme.textSecondary}">DEVSECOPS &amp; AI SRE</text>
+
+    <text x="0" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="42" fill="${theme.textPrimary}">${cleanName}</text>
+    <text x="0" y="105" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="18" fill="${theme.accent}">${cleanTitle}</text>
+    <text x="0" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="14" fill="${theme.textSecondary}">${cleanTagline}</text>
+  </g>
 </svg>`;
     },
   },

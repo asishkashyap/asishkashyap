@@ -142,7 +142,7 @@
     <text x="0" y="105" class="subtitle-text">Senior DevSecOps &amp; AI Systems Engineer</text>
 
     <!-- Description -->
-    <text x="0" y="132" class="desc-text">Zero-Trust Kubernetes Control Planes &bull; Azure OIDC &bull; Terraform IaC &bull; Autonomous AI Agents</text>
+    <text x="0" y="132" class="desc-text">Zero-Trust Kubernetes Control Planes &#8226; Azure OIDC &#8226; Terraform IaC &#8226; Autonomous AI Agents</text>
 
     <!-- Tech Badges Bar -->
     <g transform="translate(0, 150)">
