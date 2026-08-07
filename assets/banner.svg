@@ -145,22 +145,22 @@
     <text x="0" y="156" class="desc-text">Zero-Trust Kubernetes Control Planes &#8226; Azure OIDC &#8226; Terraform IaC &#8226; Autonomous AI Agents</text>
 
     <!-- Tech Badges Bar -->
-    <g transform="translate(0, 180)">
+    <g transform="translate(0, 182)">
       <!-- Badge 1 -->
-      <rect x="0" y="0" width="130" height="32" rx="8" fill="#161b22" stroke="#0089D6" stroke-width="1.5" />
-      <text x="65" y="21" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#58a6ff" text-anchor="middle">Kubernetes</text>
+      <rect x="0" y="0" width="165" height="42" rx="10" fill="#161b22" stroke="#0089D6" stroke-width="1.5" />
+      <text x="82.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#58a6ff" text-anchor="middle">Kubernetes</text>
 
       <!-- Badge 2 -->
-      <rect x="142" y="0" width="145" height="32" rx="8" fill="#161b22" stroke="#844FBA" stroke-width="1.5" />
-      <text x="214.5" y="21" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#bc8cff" text-anchor="middle">Terraform IaC</text>
+      <rect x="181" y="0" width="185" height="42" rx="10" fill="#161b22" stroke="#844FBA" stroke-width="1.5" />
+      <text x="273.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#bc8cff" text-anchor="middle">Terraform IaC</text>
 
       <!-- Badge 3 -->
-      <rect x="299" y="0" width="125" height="32" rx="8" fill="#161b22" stroke="#2ea043" stroke-width="1.5" />
-      <text x="361.5" y="21" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#3fb950" text-anchor="middle">DevSecOps</text>
+      <rect x="382" y="0" width="155" height="42" rx="10" fill="#161b22" stroke="#2ea043" stroke-width="1.5" />
+      <text x="459.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#3fb950" text-anchor="middle">DevSecOps</text>
 
       <!-- Badge 4 -->
-      <rect x="436" y="0" width="150" height="32" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5" />
-      <text x="511" y="21" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#f0883e" text-anchor="middle">AI SRE Agents</text>
+      <rect x="553" y="0" width="185" height="42" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="1.5" />
+      <text x="645.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#f0883e" text-anchor="middle">AI SRE Agents</text>
     </g>
   </g>
 

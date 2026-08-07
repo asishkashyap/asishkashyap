@@ -66,6 +66,21 @@ export const SVG_ASSETS: SvgAssetInfo[] = [
     <text x="0" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="54" fill="${theme.textPrimary}">${cleanName}</text>
     <text x="0" y="122" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="24" fill="${theme.accent}">${cleanTitle}</text>
     <text x="0" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="17" fill="${theme.textSecondary}">${cleanTagline}</text>
+
+    <!-- Tech Badges Bar -->
+    <g transform="translate(0, 182)">
+      <rect x="0" y="0" width="165" height="42" rx="10" fill="${theme.cardBg}" stroke="#0089D6" stroke-width="1.5" />
+      <text x="82.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#58a6ff" text-anchor="middle">Kubernetes</text>
+
+      <rect x="181" y="0" width="185" height="42" rx="10" fill="${theme.cardBg}" stroke="#844FBA" stroke-width="1.5" />
+      <text x="273.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#bc8cff" text-anchor="middle">Terraform IaC</text>
+
+      <rect x="382" y="0" width="155" height="42" rx="10" fill="${theme.cardBg}" stroke="#2ea043" stroke-width="1.5" />
+      <text x="459.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#3fb950" text-anchor="middle">DevSecOps</text>
+
+      <rect x="553" y="0" width="185" height="42" rx="10" fill="${theme.cardBg}" stroke="#f0883e" stroke-width="1.5" />
+      <text x="645.5" y="26" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#f0883e" text-anchor="middle">AI SRE Agents</text>
+    </g>
   </g>
 </svg>`;
     },
