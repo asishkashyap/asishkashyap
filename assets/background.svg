@@ -1,10 +1,85 @@
-<svg viewBox="0 0 1000 600" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="100%" height="100%" fill="none">
   <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#30363d" stroke-width="0.5" opacity="0.3"/>
+    <!-- Dark Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="50%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#090d11" />
+    </linearGradient>
+
+    <!-- Azure Glow Gradient -->
+    <linearGradient id="azure-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0089D6" />
+      <stop offset="50%" stop-color="#58A6FF" />
+      <stop offset="100%" stop-color="#3FA4F6" />
+    </linearGradient>
+
+    <!-- Emerald Glow Gradient -->
+    <linearGradient id="emerald-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ea043" />
+      <stop offset="100%" stop-color="#3fb950" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#30363d" stroke-width="0.5" stroke-opacity="0.35" />
+      <circle cx="50" cy="50" r="1.5" fill="#58a6ff" fill-opacity="0.25" />
     </pattern>
+
+    <filter id="soft-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
   </defs>
-  <rect width="100%" height="100%" fill="#0d1117"/>
-  <rect width="100%" height="100%" fill="url(#grid)"/>
-  <circle cx="500" cy="300" r="250" fill="#58a6ff" opacity="0.08"/>
+
+  <style>
+    .pulse-node-1 { animation: pulse 4s infinite ease-in-out; }
+    .pulse-node-2 { animation: pulse 4s infinite ease-in-out 1.5s; }
+    .pulse-node-3 { animation: pulse 4s infinite ease-in-out 3s; }
+
+    .dash-line-1 { stroke-dasharray: 10, 10; animation: dash 25s linear infinite; }
+    .dash-line-2 { stroke-dasharray: 8, 12; animation: dash-rev 20s linear infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.4); }
+    }
+    @keyframes dash { to { stroke-dashoffset: -1000; } }
+    @keyframes dash-rev { to { stroke-dashoffset: 1000; } }
+  </style>
+
+  <!-- Base Rect -->
+  <rect width="1400" height="800" fill="url(#bg-grad)" />
+  <rect width="1400" height="800" fill="url(#grid)" />
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="200" cy="200" r="250" fill="#0089D6" fill-opacity="0.08" filter="url(#soft-blur)" />
+  <circle cx="1200" cy="600" r="300" fill="#58A6FF" fill-opacity="0.07" filter="url(#soft-blur)" />
+  <circle cx="700" cy="400" r="200" fill="#2ea043" fill-opacity="0.05" filter="url(#soft-blur)" />
+
+  <!-- Network Circuit Lines -->
+  <g stroke="#30363d" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 100 150 L 350 150 L 450 250 L 800 250 L 900 150 L 1300 150" />
+    <path d="M 200 650 L 400 650 L 500 550 L 950 550 L 1050 650 L 1250 650" />
+    <path d="M 350 150 L 350 400 L 500 550" />
+    <path d="M 900 150 L 900 400 L 950 550" />
+  </g>
+
+  <!-- Glowing Active Flow Lines -->
+  <path d="M 100 150 L 350 150 L 450 250 L 800 250 L 900 150 L 1300 150" stroke="url(#azure-glow)" stroke-width="2" fill="none" class="dash-line-1" />
+  <path d="M 200 650 L 400 650 L 500 550 L 950 550 L 1050 650 L 1250 650" stroke="url(#emerald-glow)" stroke-width="2" fill="none" class="dash-line-2" />
+
+  <!-- Circuit Nodes & Glowing Pulse Points -->
+  <g fill="#0089D6">
+    <circle cx="350" cy="150" r="5" class="pulse-node-1" />
+    <circle cx="450" cy="250" r="5" class="pulse-node-2" />
+    <circle cx="800" cy="250" r="5" class="pulse-node-3" />
+    <circle cx="900" cy="150" r="5" class="pulse-node-1" />
+  </g>
+
+  <g fill="#3fb950">
+    <circle cx="400" cy="650" r="5" class="pulse-node-2" />
+    <circle cx="500" cy="550" r="5" class="pulse-node-3" />
+    <circle cx="950" cy="550" r="5" class="pulse-node-1" />
+    <circle cx="1050" cy="650" r="5" class="pulse-node-2" />
+  </g>
 </svg>

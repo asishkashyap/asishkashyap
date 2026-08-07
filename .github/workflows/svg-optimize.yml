@@ -1,0 +1,54 @@
+name: SVG Vector Asset Optimization
+
+on:
+  push:
+    paths:
+      - 'assets/*.svg'
+  pull_request:
+    paths:
+      - 'assets/*.svg'
+  workflow_dispatch:
+
+jobs:
+  optimize-svgs:
+    name: Optimize SVG Assets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install SVGO
+        run: npm install -g svgo
+
+      - name: Optimize SVGs
+        run: |
+          echo "Optimizing SVG vector assets..."
+          for file in assets/*.svg; do
+            if [ -f "$file" ]; then
+              echo "Processing $file..."
+              svgo --multipass "$file" --config='{"plugins": [{"name": "preset-default", "params": {"overrides": {"removeViewBox": false, "cleanupIds": false}}}]}' || true
+            fi
+          done
+
+      - name: Check for SVG Changes
+        id: git-check
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit Optimized SVGs
+        if: steps.git-check.outputs.changed == 'true' && github.event_name == 'push'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/*.svg
+          git commit -m "style(assets): optimize vector SVG assets via SVGO"
+          git push

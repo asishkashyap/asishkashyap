@@ -1,20 +1,69 @@
-<svg viewBox="0 0 980 60" width="100%" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="100%" height="100%" fill="none">
   <defs>
-    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.8">
-        <animate attributeName="stop-color" values="#58a6ff;#bc8cff;#238636;#58a6ff" dur="6s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="50%" stop-color="#30363d" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0.9">
-        <animate attributeName="stop-color" values="#58a6ff;#1f6feb;#bc8cff;#58a6ff" dur="6s" repeatCount="indefinite" />
-      </stop>
+    <!-- Wave Gradient 1 -->
+    <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0089D6" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#58A6FF" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3FA4F6" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Wave Gradient 2 -->
+    <linearGradient id="wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#161b22" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#21262d" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="glow-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0089D6" />
+      <stop offset="50%" stop-color="#58A6FF" />
+      <stop offset="100%" stop-color="#2ea043" />
     </linearGradient>
   </defs>
-  <path d="M0,30 C150,60 350,0 500,30 C650,60 830,10 980,30 L980,60 L0,60 Z" fill="url(#waveGrad)">
-    <animate attributeName="d" 
-      values="M0,30 C150,60 350,0 500,30 C650,60 830,10 980,30 L980,60 L0,60 Z;
-              M0,30 C180,10 320,50 500,20 C680,50 800,10 980,30 L980,60 L0,60 Z;
-              M0,30 C150,60 350,0 500,30 C650,60 830,10 980,30 L980,60 L0,60 Z"
-      dur="8s" repeatCount="indefinite" />
-  </path>
+
+  <style>
+    .wave-back {
+      animation: wave-motion-1 12s infinite ease-in-out alternate;
+    }
+    .wave-front {
+      animation: wave-motion-2 8s infinite ease-in-out alternate;
+    }
+    .wave-glow {
+      animation: wave-motion-2 8s infinite ease-in-out alternate;
+    }
+    @keyframes wave-motion-1 {
+      0% {
+        d: path("M 0,40 Q 300,90 600,40 T 1200,40 L 1200,120 L 0,120 Z");
+      }
+      50% {
+        d: path("M 0,60 Q 300,20 600,70 T 1200,50 L 1200,120 L 0,120 Z");
+      }
+      100% {
+        d: path("M 0,30 Q 300,80 600,30 T 1200,60 L 1200,120 L 0,120 Z");
+      }
+    }
+    @keyframes wave-motion-2 {
+      0% {
+        d: path("M 0,60 Q 300,20 600,65 T 1200,35 L 1200,120 L 0,120 Z");
+      }
+      50% {
+        d: path("M 0,35 Q 300,75 600,35 T 1200,65 L 1200,120 L 0,120 Z");
+      }
+      100% {
+        d: path("M 0,55 Q 300,25 600,70 T 1200,40 L 1200,120 L 0,120 Z");
+      }
+    }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="1200" height="120" fill="#0d1117" />
+
+  <!-- Back Animated Wave Layer -->
+  <path class="wave-back" d="M 0,40 Q 300,90 600,40 T 1200,40 L 1200,120 L 0,120 Z" fill="url(#wave-grad-1)" />
+
+  <!-- Front Animated Wave Layer -->
+  <path class="wave-front" d="M 0,60 Q 300,20 600,65 T 1200,35 L 1200,120 L 0,120 Z" fill="url(#wave-grad-2)" />
+
+  <!-- Top Glowing Crest Line -->
+  <path class="wave-glow" d="M 0,60 Q 300,20 600,65 T 1200,35" fill="none" stroke="url(#glow-line)" stroke-width="2" />
 </svg>
