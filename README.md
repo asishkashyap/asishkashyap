@@ -68,15 +68,6 @@
 
 ---
 
-## 📂 Repository Architecture
-
-- 🤖 **`.github/workflows/`**: Continuous integration workflows for automated contribution snake generation and metrics sync.
-- 🎨 **`assets/`**: Vector graphics, banners, waves, and platform badges.
-- 📖 **`docs/`**: Branding guide, setup customization walkthrough, and engineering roadmap.
-- ⚡ **`scripts/`**: Automation scripts for SVG generation and README dynamic feeds.
-
----
-
 <div align="center">
   <sub>Built with ❤️ and engineered with precision. © 2026 Asish Kashyap.</sub>
 </div>
