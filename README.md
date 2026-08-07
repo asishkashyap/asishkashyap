@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Hero Banner Vector SVG -->
-<img src="https://raw.githubusercontent.com/asishkashyap/asishkashyap/main/assets/banner.svg" alt="Asish Kashyap - Senior DevSecOps & AI Engineer" width="100%" />
+<img src="assets/banner.svg" alt="Asish Kashyap - Senior DevSecOps & AI Engineer" width="100%" />
 
 <br />
 
@@ -243,9 +243,9 @@ $ asish --list-passions
 <br />
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/asishkashyap/asishkashyap/main/assets/platform.svg" alt="Zero-Trust Platform Architecture" width="100%" />
+  <img src="assets/platform.svg" alt="Zero-Trust Platform Architecture" width="100%" />
   <br /><br />
-  <img src="https://raw.githubusercontent.com/asishkashyap/asishkashyap/main/assets/devops.svg" alt="Continuous DevSecOps Pipeline" width="100%" />
+  <img src="assets/devops.svg" alt="Continuous DevSecOps Pipeline" width="100%" />
 </div>
 
 <br />
@@ -278,11 +278,11 @@ Operational logs and metric streams are analyzed by event-driven serverless work
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=asishkashyap&show_icons=true&theme=github_dark&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" width="49%" />
+<img src="https://github-readme-stats-one-bice.vercel.app/api?username=asishkashyap&show_icons=true&theme=github_dark&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" width="49%" />
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=asishkashyap&theme=dark&hide_border=true&background=0d1117&stroke=58a6ff&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff" alt="GitHub Streak" width="49%" />
 
 <br/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=asishkashyap&layout=compact&theme=github_dark&hide_border=true" alt="Top Languages" width="60%" />
+<img src="https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=asishkashyap&layout=compact&theme=github_dark&hide_border=true" alt="Top Languages" width="60%" />
 
 </div>
 
