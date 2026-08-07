@@ -120,10 +120,10 @@
   <circle class="p2" cx="780" cy="190" r="3.5" fill="#f0883e" />
 
   <!-- Eyebrow Tag -->
-  <text x="40" y="52" class="mono-text">👋 HELLO WORLD // ASHISH KASHYAP<tspan class="cursor">_</tspan></text>
+  <text x="40" y="52" class="mono-text">👋 HELLO WORLD // ASISH KASHYAP<tspan class="cursor">_</tspan></text>
 
   <!-- Main Title with Gradient Fill -->
-  <text x="40" y="98" class="main-title" fill="url(#titleGrad)">Ashish Kashyap</text>
+  <text x="40" y="98" class="main-title" fill="url(#titleGrad)">Asish Kashyap</text>
 
   <!-- Subtitle -->
   <text x="40" y="132" class="sub-title">Senior DevOps &amp; Platform Engineer — Building IDPs, Auto SRE &amp; Cloud Native Infrastructure</text>

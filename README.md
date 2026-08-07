@@ -1,10 +1,10 @@
 <div align="center">
 
-  <img src="assets/banner.svg" alt="Ashish Kashyap Banner" width="100%" />
+  <img src="assets/banner.svg" alt="Asish Kashyap Banner" width="100%" />
 
   <br />
 
-  <h1>👋 Hi, I'm Ashish Kashyap</h1>
+  <h1>👋 Hi, I'm Asish Kashyap</h1>
   <p><strong>Senior DevOps & Platform Engineer</strong></p>
 
   <p>
