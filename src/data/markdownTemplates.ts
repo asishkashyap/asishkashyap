@@ -22,54 +22,131 @@ export function generateMainReadme(config: ProfileConfig): string {
   const badgesSection = Object.entries(categorized).map(([cat, badges]) => `
 ### 🔸 ${cat}
 <div align="center">
+
 ${badges.join(' ')}
+
 </div>
 `).join('\n');
 
-  // Repositories section
+  // Repositories section formatted as clean SaaS showcase cards
   const reposMarkdown = config.repositories.map(repo => `
-### 🔹 [${repo.name}](${repo.url}) \`${repo.badge || 'Project'}\`
-${repo.description}
-* **Stack:** \`${repo.language}\` | ⭐ **Stars:** ${repo.stars} | 🍴 **Forks:** ${repo.forks}
-* **Topics:** ${repo.topics.map(t => `\`#${t}\``).join(' ')}
+<table>
+  <tr>
+    <td width="100%">
+      <h3 align="left">🔹 <a href="${repo.url}"><b>${repo.name}</b></a> <code>${repo.badge || 'Project'}</code></h3>
+      <p><i>${repo.description}</i></p>
+      <p>
+        <b>Primary Stack:</b> <code>${repo.language}</code> &nbsp;|&nbsp;
+        ⭐ <b>Stars:</b> <code>${repo.stars}</code> &nbsp;|&nbsp;
+        🍴 <b>Forks:</b> <code>${repo.forks}</code>
+      </p>
+      <p><b>Topics:</b> ${repo.topics.map(t => `<code>#${t}</code>`).join(' ')}</p>
+    </td>
+  </tr>
+</table>
 `).join('\n');
 
   return `<div align="center">
 
-<!-- Hero Banner SVG -->
+<!-- Hero Banner Vector SVG -->
 <img src="./assets/banner.svg" alt="${config.fullName} - ${config.title}" width="100%" />
 
 <br />
 
-# 👋 Welcome to my GitHub Engineering Hub!
-### *"${config.tagline}"*
+<!-- Animated Typing SVG -->
+<a href="https://github.com/${config.username}">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=20&duration=2500&pause=1000&color=58A6FF&center=true&vCenter=true&width=800&lines=Senior+DevSecOps+%26+AI+Engineer+(6%2B+Yrs);Zero-Trust+Kubernetes+%26+Cloud+Native+IDPs;Autonomous+AI+SRE+Agents+%26+Infrastructure+as+Code;Building+Resilient+CI%2FCD+Pipelines+%26+Azure+OIDC" alt="Typing Header SVG" />
+</a>
 
-[![Website](https://img.shields.io/badge/Website-${encodeURIComponent(config.website.replace('https://', ''))}-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](${config.website})
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-${encodeURIComponent(config.linkedin)}-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${config.linkedin})
-[![Twitter](https://img.shields.io/badge/X%2FTwitter-${encodeURIComponent(config.twitter)}-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/${config.twitter})
-[![Email](https://img.shields.io/badge/Email-${encodeURIComponent(config.email)}-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:${config.email})
+<br />
 
----
+### 🚀 *"Architecting Zero-Trust Cloud Platforms & Autonomous AI SRE Workflows"*
+
+<!-- Status Badges Row -->
+[![Location](https://img.shields.io/badge/Location-Greater%20Noida%2C%20India%20%7C%20Remote-0d1117?style=for-the-badge&logo=googlemaps&logoColor=58a6ff)](https://github.com/asishkashyap)
+[![Experience](https://img.shields.io/badge/Experience-6%2B%20Years-0d1117?style=for-the-badge&logo=experience&logoColor=3fb950)](https://github.com/asishkashyap)
+[![Role Status](https://img.shields.io/badge/Status-🟢%20Open%20for%20Senior%20Roles-0d1117?style=for-the-badge&logo=statuspage&logoColor=3fb950)](mailto:${config.email})
+
+<br />
+
+<!-- CTA Badges Matrix -->
+[![Website](https://img.shields.io/badge/Website-asishkashyap.com-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](${config.website})
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-asishkashyap-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${config.linkedin})
+[![X/Twitter](https://img.shields.io/badge/X%2FTwitter-%40asishkashyap1-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/${config.twitter})
+[![Email](https://img.shields.io/badge/Email-kashyapashish29%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:${config.email})
+
+<br />
+
+<!-- SaaS Hero Metric Cards Grid -->
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <h2>⚡ 6+ Yrs</h2>
+      <sub>DevSecOps &amp; Cloud</sub>
+    </td>
+    <td align="center" width="25%">
+      <h2>🛡️ Zero-Trust</h2>
+      <sub>K8s &amp; Azure OIDC</sub>
+    </td>
+    <td align="center" width="25%">
+      <h2>📦 100+</h2>
+      <sub>Terraform Modules</sub>
+    </td>
+    <td align="center" width="25%">
+      <h2>🤖 AI SRE</h2>
+      <sub>Autonomous Workflows</sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
-## 👨‍💻 About Me & Engineering Focus
+---
+
+## 🎯 Recruiter & Leadership Executive Summary
 
 \`\`\`bash
 $ asish --version
 Asish Kashyap v3.6.0 (Systems & AI Architecture Edition)
 
-$ asish --get-bio
+$ asish --get-summary
 > ${config.bio}
 > Location: ${config.location}
-> Current Role: ${config.company}
+> Target Scope: Senior DevSecOps Engineer, Platform Architect, Lead Infrastructure & AI SRE.
 
 $ asish --list-passions
-[✓] High-throughput Distributed Systems & Platform Engineering
-[✓] Cloud Native & Kubernetes Control Planes (EKS / AKS)
+[✓] High-throughput Distributed Systems & Cloud Native Platform Engineering
+[✓] Zero-Trust Kubernetes Control Planes (EKS / AKS) & Service Meshes (Istio/Cilium)
 [✓] DevSecOps, Shift-Left Security & Terraform Infrastructure as Code
-[✓] Autonomous AI Agent Workflows & LLM RAG Engines
+[✓] Autonomous AI Agent Workflows, LLM RAG Engines & Self-Healing SRE Automation
 \`\`\`
+
+---
+
+## 🏆 Key Quantitative Engineering Achievements
+
+<table>
+  <tr>
+    <th width="30%">Impact Domain</th>
+    <th width="70%">Engineering Milestone &amp; Production Outcome</th>
+  </tr>
+  <tr>
+    <td><b>📈 99.99% Availability</b></td>
+    <td>Architected resilient multi-region Kubernetes control planes with blue/green traffic shifting and automated failover recovery.</td>
+  </tr>
+  <tr>
+    <td><b>🔐 Zero-Trust Security</b></td>
+    <td>Eliminated hardcoded cloud credentials across 50+ repositories using Azure OIDC passwordless federated authentication and automated Checkov IaC scans.</td>
+  </tr>
+  <tr>
+    <td><b>🚀 70% Faster Releases</b></td>
+    <td>Designed enterprise modular GitHub Actions reusable workflows, reducing CI/CD pipeline execution duration from 25m to 7m.</td>
+  </tr>
+  <tr>
+    <td><b>🤖 AI SRE Agents</b></td>
+    <td>Developed autonomous AI incident triage bots utilizing Gemini API for real-time anomaly log parsing and pod diagnostic summaries.</td>
+  </tr>
+</table>
 
 ---
 
@@ -79,9 +156,54 @@ ${badgesSection}
 
 ---
 
-${config.showFeaturedRepos ? `## 🚀 Featured Open Source Repositories\n\n${reposMarkdown}\n---\n` : ''}
+${config.showFeaturedRepos ? `## 🚀 Featured Open Source Repositories & Monorepos\n\n${reposMarkdown}\n---\n` : ''}
 
-## 📊 Live GitHub Developer Metrics
+## 📜 Professional Certifications & Verified Credentials
+
+<div align="center">
+
+[![CKA](https://img.shields.io/badge/Certified-CKA%20--%20Kubernetes%20Administrator-326ce5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![CKS](https://img.shields.io/badge/Certified-CKS%20--%20Kubernetes%20Security-3fb950?style=for-the-badge&logo=shield&logoColor=white)](https://kubernetes.io/)
+[![Azure Architect](https://img.shields.io/badge/Microsoft-Azure%20Solutions%20Architect%20Expert-0089d6?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![Terraform Associate](https://img.shields.io/badge/HashiCorp-Terraform%20Associate-844fba?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![AWS DevOps](https://img.shields.io/badge/AWS-DevOps%20Engineer%20Professional-ff9900?style=for-the-badge&logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/)
+
+</div>
+
+---
+
+## 🔍 Collapsible Technical Deep Dives & Architecture Specs
+
+<details>
+<summary>🏛️ <b>Deep-Dive Systems Architecture & Design Philosophy</b> (Click to expand)</summary>
+
+<br />
+
+### 1. Immutable Infrastructure & GitOps
+All infrastructure state is codified in Terraform monorepos (\`terraform-azure-enterprise\`). State modifications require peer-reviewed Pull Requests validated by \`tflint\`, \`checkov\`, and dry-run \`terraform plan\` executions via Azure OIDC.
+
+### 2. Zero-Trust Kubernetes Pod Security
+Workloads run under the \`Restricted\` Pod Security Standard. Root processes are forbidden (\`runAsNonRoot: true\`), root filesystems are mounted read-only, Linux capabilities are stripped, and inter-pod network isolation is enforced by default-deny NetworkPolicies.
+
+### 3. Autonomous AI SRE Workflows
+Operational logs and metric streams are analyzed by event-driven serverless workers. Anomaly clusters are passed to Gemini LLM agents to generate root-cause hypotheses and recommend remediation steps to on-call engineers.
+
+</details>
+
+<details>
+<summary>🗺️ <b>Strategic Learning & Engineering Roadmap (Q3 / Q4 2026)</b> (Click to expand)</summary>
+
+<br />
+
+- [ ] **eBPF Kernel Observability:** Implementing Cilium Service Mesh & Hubble deep packet kernel monitoring.
+- [ ] **Multi-Agent Orchestration:** Scaling distributed LLM agent swarms with LangGraph and server-side Gemini function calling.
+- [ ] **WebAssembly at the Edge:** Exploring Spin/Wasmtime micro-runtimes for low-latency edge computing.
+
+</details>
+
+---
+
+## 📊 Live GitHub Developer Metrics & Activity Dashboard
 
 <div align="center">
 
@@ -106,17 +228,33 @@ ${config.showSnakeAnimation ? `
 
 ---
 
-## 🌐 Connect & Collaborate
-
-* 📬 **Email:** [${config.email}](mailto:${config.email})
-* 💼 **LinkedIn:** [linkedin.com/in/${config.linkedin}](https://linkedin.com/in/${config.linkedin})
-* 🐦 **X (Twitter):** [@${config.twitter}](https://x.com/${config.twitter})
-* 🌐 **Personal Portfolio:** [${config.website}](${config.website})
-
----
+## 🌐 Connect & Technical Collaboration
 
 <div align="center">
-  <sub>Built with ❤️ & Markdown Craftsmanship by <a href="https://github.com/${config.username}">${config.fullName}</a></sub>
+
+<table>
+  <tr>
+    <td align="center"><b>📬 Direct Email</b></td>
+    <td align="center"><a href="mailto:${config.email}"><code>${config.email}</code></a></td>
+  </tr>
+  <tr>
+    <td align="center"><b>💼 LinkedIn Profile</b></td>
+    <td align="center"><a href="https://linkedin.com/in/${config.linkedin}"><code>linkedin.com/in/${config.linkedin}</code></a></td>
+  </tr>
+  <tr>
+    <td align="center"><b>🐦 X (Twitter)</b></td>
+    <td align="center"><a href="https://x.com/${config.twitter}"><code>@${config.twitter}</code></a></td>
+  </tr>
+  <tr>
+    <td align="center"><b>🌐 Personal Site</b></td>
+    <td align="center"><a href="${config.website}"><code>${config.website}</code></a></td>
+  </tr>
+</table>
+
+<br />
+
+<sub>Designed with ❤️, Precision &amp; Markdown Craftsmanship by <b><a href="https://github.com/${config.username}">${config.fullName}</a></b></sub>
+
 </div>
 `;
 }

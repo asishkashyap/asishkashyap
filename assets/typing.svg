@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="42" viewBox="0 0 850 42" fill="none">
+  <style>
+    .text {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Segoe UI', monospace;
+      font-size: 15px;
+      font-weight: 600;
+      fill: #58a6ff;
+    }
+    .prompt {
+      fill: #3fb950;
+    }
+    .cursor {
+      fill: #bc8cff;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+  <rect width="100%" height="100%" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="16" y="26" class="text">
+    <tspan class="prompt">asish@devsecops-ai:~$</tspan> 
+    <tspan fill="#f0f6fc">Executing stack --role="Senior DevSecOps &amp; AI Engineer" --experience="6+ Yrs"</tspan>
+    <tspan class="cursor">▋</tspan>
+  </text>
+</svg>
