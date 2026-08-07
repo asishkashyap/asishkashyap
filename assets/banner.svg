@@ -1,0 +1,102 @@
+<svg fill="none" viewBox="0 0 980 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .container {
+          width: 980px;
+          height: 240px;
+          background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #050811 100%);
+          border-radius: 16px;
+          border: 1px solid #30363d;
+          box-sizing: border-box;
+          padding: 32px 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .glow-orb {
+          position: absolute;
+          right: -40px;
+          top: -40px;
+          width: 320px;
+          height: 320px;
+          background: radial-gradient(circle, #58a6ff 0%, transparent 70%);
+          animation: pulseGlow 6s ease-in-out infinite;
+          pointer-events: none;
+        }
+        .grid-overlay {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(#30363d 1px, transparent 1px);
+          background-size: 24px 24px;
+          opacity: 0.25;
+        }
+        .title-gradient {
+          font-size: 32px;
+          font-weight: 800;
+          background: linear-gradient(90deg, #f0f6fc 0%, #58a6ff 50%, #ffffff 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientMove 5s linear infinite;
+          margin: 0;
+          letter-spacing: -0.02em;
+        }
+        .subtitle {
+          font-size: 16px;
+          color: #8b949e;
+          margin-top: 8px;
+          font-weight: 500;
+        }
+        .badge-row {
+          display: flex;
+          gap: 12px;
+          margin-top: 20px;
+          align-items: center;
+        }
+        .pill {
+          background: #30363d;
+          color: #58a6ff;
+          border: 1px solid #58a6ff40;
+          padding: 6px 14px;
+          border-radius: 20px;
+          font-size: 13px;
+          font-weight: 600;
+          font-family: "Fira Code", monospace;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+      </style>
+
+      <div class="container">
+        <div class="grid-overlay"></div>
+        <div class="glow-orb"></div>
+        <div style="position: relative; z-index: 2;">
+          <div style="font-family: 'Fira Code', monospace; color: #58a6ff; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
+            👋 HELLO WORLD // ASHISH KASHYAP
+          </div>
+          <h1 class="title-gradient">Ashish Kashyap</h1>
+          <p class="subtitle">Senior Full Stack &amp; Cloud Native Engineer — Building high-throughput systems, resilient platforms &amp; AI architectures</p>
+          <div class="badge-row">
+            <span class="pill">⚡ Systems Architecture</span>
+            <span class="pill">🤖 AI &amp; LLM Infrastructure</span>
+            <span class="pill">☁️ Cloud Native Platform</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

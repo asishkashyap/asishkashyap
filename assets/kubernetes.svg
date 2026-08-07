@@ -1,0 +1,5 @@
+<svg viewBox="0 0 980 120" width="100%" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="980" height="120" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <text x="30" y="45" fill="#58a6ff" font-family="monospace" font-size="15" font-weight="bold">☸️ KUBERNETES &amp; SERVICE MESH</text>
+  <text x="30" y="75" fill="#8b949e" font-family="system-ui" font-size="14">GitOps workflow automation, Istio traffic management, custom CRDs, and Helm chart deployments.</text>
+</svg>
