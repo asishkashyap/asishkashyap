@@ -35,24 +35,24 @@
 
 ---
 
-## ⚡ Currently Working As
+## 🎯 Core Focus & Expertise
 
 - 🚀 **Internal Developer Platforms (IDP)**
-- 🤖 **AI-powered DevOps & Auto SRE**
+- 🤖 **AI-Powered DevOps & Auto-SRE**
 - ☸️ **Kubernetes Platform Engineering**
-- ⚡ **GitHub Actions Automation**
+- ⚡ **GitHub Actions & CI/CD Pipelines**
 - 🔐 **DevSecOps & Shift-Left Security**
 - ☁️ **Azure Cloud Infrastructure**
 
 ---
 
-## 🚀 What I'm Working On
+## 🚀 Active Projects & Learning
 
-- 🌱 Learning **Generative AI**, **LLM Integrations**, **Platform Engineering**
-- 🔭 Building **AI-driven Kubernetes Auto SRE**
-- ⚙️ Automating deployments using **GitHub Actions**
-- 📦 Creating reusable CI/CD pipeline templates
-- 📚 Teaching Azure DevOps, GitHub Actions, and Terraform
+- 🔭 Building **AI-driven Kubernetes Auto-SRE Agent**
+- 🌱 Exploring **Generative AI & LLM Integrations for Infrastructure**
+- ⚙️ Automating zero-trust deployments using **GitHub Actions**
+- 📦 Creating enterprise reusable **CI/CD Pipeline Templates**
+- 📚 Sharing knowledge on **Azure DevOps, GitHub Actions, and Terraform**
 
 ---
 
