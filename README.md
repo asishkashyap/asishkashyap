@@ -28,19 +28,6 @@ FRAMEWORKS     :: React / Node.js / Express / Next.js / Tailwind CSS / GraphQL
 
 ---
 
-## 📊 Developer Statistics & Activity
-
-<div align="center">
-  <a href="https://github.com/asishkashyap">
-    <img src="https://github-readme-stats.vercel.app/api?username=asishkashyap&show_icons=true&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=8b949e&icon_color=58a6ff&border_color=30363d&include_all_commits=true" alt="GitHub Stats" height="165" />
-  </a>
-  <a href="https://github.com/asishkashyap">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=asishkashyap&layout=compact&theme=dark&bg_color=0d1117&title_color=58a6ff&text_color=8b949e&border_color=30363d" alt="Top Languages" height="165" />
-  </a>
-</div>
-
----
-
 ## 🐍 GitHub Contribution Snake
 
 <div align="center">
