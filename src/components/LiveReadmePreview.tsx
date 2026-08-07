@@ -161,14 +161,14 @@ export const LiveReadmePreview: React.FC<LiveReadmePreviewProps> = ({ config, on
 
                 <div className="p-4 space-y-3 text-[#f0f6fc]">
                   <div>
-                    <span className="text-blue-400">$ ashish --version</span>
+                    <span className="text-blue-400">$ asish --version</span>
                     <div className="text-[#8b949e] mt-1 pl-3 border-l-2 border-blue-500/30">
-                      Ashish Kashyap v3.6.0 (Systems & AI Architecture Edition)
+                      Asish Kashyap v3.6.0 (Systems & AI Architecture Edition)
                     </div>
                   </div>
 
                   <div>
-                    <span className="text-blue-400">$ ashish --get-bio</span>
+                    <span className="text-blue-400">$ asish --get-bio</span>
                     <div className="text-[#8b949e] mt-1 pl-3 border-l-2 border-blue-500/30 space-y-1">
                       <p>&gt; {config.bio}</p>
                       <p>&gt; Location: <span className="text-[#f0f6fc]">{config.location}</span></p>

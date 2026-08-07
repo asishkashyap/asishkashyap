@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="assets/banner.svg" alt="Asish Kashyap Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/asishkashyap/asishkashyap/main/assets/banner.svg?v=2" alt="Asish Kashyap Banner" width="100%" />
 
   <br />
 
@@ -78,5 +78,5 @@
 ---
 
 <div align="center">
-  <sub>Built with ❤️ and engineered with precision. © 2026 Ashish Kashyap.</sub>
+  <sub>Built with ❤️ and engineered with precision. © 2026 Asish Kashyap.</sub>
 </div>

@@ -45,10 +45,10 @@ ${repo.description}
 ## 👨‍💻 About Me & Engineering Focus
 
 \`\`\`bash
-$ ashish --version
-Ashish Kashyap v3.6.0 (Systems & AI Architecture Edition)
+$ asish --version
+Asish Kashyap v3.6.0 (Systems & AI Architecture Edition)
 
-$ ashish --get-bio
+$ asish --get-bio
 > ${config.bio}
 > Location: ${config.location}
 > Current Role: ${config.company}
@@ -263,7 +263,7 @@ jobs:
 export function generateLicense(): string {
   return `MIT License
 
-Copyright (c) 2026 Ashish Kashyap
+Copyright (c) 2026 Asish Kashyap
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -146,7 +146,7 @@ export const DEFAULT_REPOSITORIES: FeaturedRepository[] = [
 
 export const DEFAULT_PROFILE: ProfileConfig = {
   username: 'kashyapashish29',
-  fullName: 'Ashish Kashyap',
+  fullName: 'Asish Kashyap',
   title: 'Lead Software & Systems Engineer',
   tagline: 'Architecting High-Performance Cloud Native Platforms & Intelligent AI Systems',
   bio: 'Passionate developer specializing in distributed systems, Kubernetes automation, real-time AI agents, and polished developer tools.',
