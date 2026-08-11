@@ -19,6 +19,8 @@ export function generateMainReadme(config: ProfileConfig): string {
     categorized[cat].push(`![${item.name}](https://img.shields.io/badge/${encodeURIComponent(item.name)}-${item.bgColor}?style=for-the-badge&logo=${item.logo}&logoColor=${item.logoColor})`);
   });
 
+  const siteDisplay = (config.website || 'https://asishkashyap.com').replace(/^https?:\/\//, '').replace(/\/$/, '').toUpperCase();
+
   const badgesSection = Object.entries(categorized).map(([cat, badges]) => `
 ### 🔸 ${cat}
 <div align="center">
@@ -70,7 +72,7 @@ ${badges.join(' ')}
 <br />
 
 <!-- CTA Badges Matrix -->
-[![Website](https://img.shields.io/badge/Website-asishkashyap.com-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](${config.website})
+[![Website](https://img.shields.io/badge/WEBSITE-${encodeURIComponent(siteDisplay)}-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](${config.website})
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-asishkashyap-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${config.linkedin})
 [![X/Twitter](https://img.shields.io/badge/X%2FTwitter-%40asishkashyap1-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/${config.twitter})
 [![Email](https://img.shields.io/badge/Email-kashyapashish29%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:${config.email})

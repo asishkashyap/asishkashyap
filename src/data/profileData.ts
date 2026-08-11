@@ -159,7 +159,7 @@ export const DEFAULT_PROFILE: ProfileConfig = {
   location: 'Greater Noida, India',
   company: 'Senior DevSecOps & AI Engineer',
   email: 'kashyapashish29@gmail.com',
-  website: 'https://github.com/asishkashyap',
+  website: 'https://asishkashyap.com',
   twitter: 'asishkashyap',
   linkedin: 'asish-kashyap-23631115',
   theme: 'darkSlate',
