@@ -1,5 +1,6 @@
 import { ProfileConfig } from '../types';
 import { THEMES, TECH_STACK } from './profileData';
+import { formatLinkedInUrl } from '../utils/urlUtils';
 
 export function generateMainReadme(config: ProfileConfig): string {
   const theme = THEMES[config.theme] || THEMES.darkSlate;
@@ -73,7 +74,7 @@ ${badges.join(' ')}
 
 <!-- CTA Badges Matrix -->
 [![Website](https://img.shields.io/badge/WEBSITE-${encodeURIComponent(siteDisplay)}-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](${config.website})
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-asishkashyap-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/${config.linkedin})
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-asish--k--23631115-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](${formatLinkedInUrl(config.linkedin)})
 [![X/Twitter](https://img.shields.io/badge/X%2FTwitter-%40asishkashyap1-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/${config.twitter})
 [![Email](https://img.shields.io/badge/Email-kashyapashish29%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:${config.email})
 

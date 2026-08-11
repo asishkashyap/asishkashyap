@@ -109,6 +109,27 @@ export const ProfileCustomizer: React.FC<ProfileCustomizerProps> = ({ config, se
             </div>
 
             <div>
+              <label className="block text-[#8b949e] font-semibold mb-1">LinkedIn Handle or URL</label>
+              <input
+                type="text"
+                value={config.linkedin}
+                onChange={(e) => setConfig({ ...config, linkedin: e.target.value })}
+                placeholder="https://www.linkedin.com/in/asish-k-23631115/ or asish-k-23631115"
+                className="w-full bg-[#0d1117] border border-[#30363d] rounded-lg px-3 py-2 text-[#f0f6fc] font-mono focus:border-blue-500 outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[#8b949e] font-semibold mb-1">Email Address</label>
+              <input
+                type="text"
+                value={config.email}
+                onChange={(e) => setConfig({ ...config, email: e.target.value })}
+                className="w-full bg-[#0d1117] border border-[#30363d] rounded-lg px-3 py-2 text-[#f0f6fc] font-mono focus:border-blue-500 outline-none"
+              />
+            </div>
+
+            <div>
               <label className="block text-[#8b949e] font-semibold mb-1">Bio</label>
               <textarea
                 rows={3}

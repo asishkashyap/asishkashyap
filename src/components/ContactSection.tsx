@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Mail, Linkedin, Twitter, Github, Check, MapPin, Building2, Sparkles, MessageSquare } from 'lucide-react';
 import { ProfileConfig } from '../types';
+import { formatLinkedInUrl } from '../utils/urlUtils';
 
 interface ContactSectionProps {
   config: ProfileConfig;
@@ -10,6 +11,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+
+  const linkedinUrl = formatLinkedInUrl(config.linkedin);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(config.email);
@@ -33,7 +36,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
   };
 
   return (
-    <section id="contact" className="py-16 border-t border-[#30363d]/60 bg-[#0d1117]/80">
+    <section id="contact" className="py-16 border-t border-[#232f45]/70 bg-[#0b0f17]/90">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -41,14 +44,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
           {/* Left Contact Info & Socials */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono text-blue-400 font-semibold uppercase tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-mono text-sky-400 font-semibold uppercase tracking-wider mb-1">
                 <Send className="w-4 h-4" />
                 <span>Get In Touch</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#f0f6fc]">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#f8fafc]">
                 Let's Collaborate & Connect
               </h2>
-              <p className="text-sm text-[#8b949e] mt-2 leading-relaxed">
+              <p className="text-sm text-[#94a3b8] mt-2 leading-relaxed">
                 Whether you have a DevSecOps architecture challenge, Kubernetes platform project, or AI SRE opportunity, feel free to reach out directly.
               </p>
             </div>
@@ -56,19 +59,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
             {/* Direct Channels */}
             <div className="space-y-3">
               {/* Email Card */}
-              <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-4 flex items-center justify-between gap-3 shadow-md">
+              <div className="bg-[#131b28] border border-[#232f45] rounded-2xl p-4 flex items-center justify-between gap-3 shadow-md">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-[#8b949e]">Direct Email</p>
-                    <p className="text-sm font-semibold text-[#f0f6fc] font-mono">{config.email}</p>
+                    <p className="text-xs text-[#94a3b8]">Direct Email</p>
+                    <p className="text-sm font-semibold text-[#f8fafc] font-mono">{config.email}</p>
                   </div>
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="p-2 bg-[#0d1117] hover:bg-[#21262d] border border-[#30363d] text-xs font-medium text-[#f0f6fc] rounded-lg transition-colors flex items-center gap-1.5 shrink-0"
+                  className="p-2 bg-[#0b0f17] hover:bg-[#1a2436] border border-[#232f45] text-xs font-medium text-[#f8fafc] rounded-xl transition-colors flex items-center gap-1.5 shrink-0"
                 >
                   {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : null}
                   <span>{copiedEmail ? 'Copied' : 'Copy'}</span>
@@ -77,18 +80,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
 
               {/* Location & Role */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-3.5 flex items-center gap-2.5">
+                <div className="bg-[#131b28] border border-[#232f45] rounded-xl p-3.5 flex items-center gap-2.5">
                   <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
                   <div>
-                    <p className="text-[10px] text-[#8b949e] uppercase font-mono">Location</p>
-                    <p className="text-xs font-bold text-[#f0f6fc] truncate">{config.location}</p>
+                    <p className="text-[10px] text-[#94a3b8] uppercase font-mono">Location</p>
+                    <p className="text-xs font-bold text-[#f8fafc] truncate">{config.location}</p>
                   </div>
                 </div>
-                <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-3.5 flex items-center gap-2.5">
-                  <Building2 className="w-4 h-4 text-blue-400 shrink-0" />
+                <div className="bg-[#131b28] border border-[#232f45] rounded-xl p-3.5 flex items-center gap-2.5">
+                  <Building2 className="w-4 h-4 text-sky-400 shrink-0" />
                   <div>
-                    <p className="text-[10px] text-[#8b949e] uppercase font-mono">Role</p>
-                    <p className="text-xs font-bold text-[#f0f6fc] truncate">Senior Engineer</p>
+                    <p className="text-[10px] text-[#94a3b8] uppercase font-mono">Role</p>
+                    <p className="text-xs font-bold text-[#f8fafc] truncate">Senior Lead</p>
                   </div>
                 </div>
               </div>
@@ -100,16 +103,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
                 href={`https://github.com/${config.username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#161b22] hover:bg-[#21262d] border border-[#30363d] text-xs font-semibold text-[#f0f6fc] transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#131b28] hover:bg-[#1a2436] border border-[#232f45] text-xs font-semibold text-[#f8fafc] transition-colors shadow-sm"
               >
                 <Github className="w-4 h-4 text-white" />
                 <span>GitHub Profile</span>
               </a>
               <a
-                href={`https://linkedin.com/in/${config.linkedin}`}
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#161b22] hover:bg-[#21262d] border border-[#30363d] text-xs font-semibold text-blue-400 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#131b28] hover:bg-[#1a2436] border border-[#232f45] text-xs font-semibold text-sky-400 transition-colors shadow-sm"
               >
                 <Linkedin className="w-4 h-4" />
                 <span>LinkedIn</span>

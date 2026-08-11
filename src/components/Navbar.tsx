@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
   Mail, 
   Sparkles, 
   Terminal, 
@@ -16,6 +15,7 @@ import {
 } from 'lucide-react';
 import { ProfileConfig, ThemePreset } from '../types';
 import { THEMES } from '../data/profileData';
+import { formatLinkedInUrl } from '../utils/urlUtils';
 
 interface NavbarProps {
   config: ProfileConfig;
@@ -30,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const themeKeys = Object.keys(THEMES) as ThemePreset[];
+  const linkedinUrl = formatLinkedInUrl(config.linkedin);
 
   const navLinks = [
     { name: 'About', href: '#about', icon: Terminal },
@@ -40,23 +41,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0d1117]/85 backdrop-blur-md border-b border-[#30363d] transition-colors duration-200">
+    <header className="sticky top-0 z-50 bg-[#0b0f17]/90 backdrop-blur-md border-b border-[#232f45] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <a href="#about" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white font-mono font-bold text-lg shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-mono font-bold text-lg shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
             AK
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-[#f0f6fc] text-base group-hover:text-blue-400 transition-colors">
+              <span className="font-bold text-[#f8fafc] text-base group-hover:text-sky-400 transition-colors">
                 {config.fullName}
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono">
+              <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20 font-mono">
                 Senior DevSecOps & AI
               </span>
             </div>
-            <p className="text-xs text-[#8b949e]">@{config.username}</p>
+            <p className="text-xs text-[#94a3b8]">@{config.username}</p>
           </div>
         </a>
 
@@ -68,9 +69,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 key={link.name}
                 href={link.href}
-                className="flex items-center gap-1.5 text-xs font-medium text-[#8b949e] hover:text-[#f0f6fc] px-3 py-2 rounded-lg hover:bg-[#161b22] transition-colors"
+                className="flex items-center gap-1.5 text-xs font-medium text-[#94a3b8] hover:text-[#f8fafc] px-3 py-2 rounded-lg hover:bg-[#131b28] transition-colors"
               >
-                <Icon className="w-3.5 h-3.5 text-blue-400" />
+                <Icon className="w-3.5 h-3.5 text-sky-400" />
                 {link.name}
               </a>
             );
@@ -80,16 +81,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Action Controls */}
         <div className="flex items-center gap-2">
           {/* Theme Selector */}
-          <div className="hidden sm:flex items-center gap-1.5 bg-[#161b22] border border-[#30363d] rounded-lg px-2.5 py-1.5 text-xs">
+          <div className="hidden sm:flex items-center gap-1.5 bg-[#131b28] border border-[#232f45] rounded-lg px-2.5 py-1.5 text-xs">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <select
               value={config.theme}
               onChange={(e) => setConfig({ ...config, theme: e.target.value as ThemePreset })}
-              className="bg-transparent text-[#f0f6fc] font-medium outline-none cursor-pointer pr-1 text-xs"
+              className="bg-transparent text-[#f8fafc] font-medium outline-none cursor-pointer pr-1 text-xs"
               aria-label="Select Theme"
             >
               {themeKeys.map((key) => (
-                <option key={key} value={key} className="bg-[#161b22] text-[#f0f6fc]">
+                <option key={key} value={key} className="bg-[#131b28] text-[#f8fafc]">
                   {THEMES[key].name}
                 </option>
               ))}
@@ -97,28 +98,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Social Links */}
-          <div className="hidden lg:flex items-center gap-1.5 border-l border-[#30363d] pl-2">
+          <div className="hidden lg:flex items-center gap-1.5 border-l border-[#232f45] pl-2">
             <a
               href={`https://github.com/${config.username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#8b949e] hover:text-white hover:bg-[#161b22] rounded-lg transition-colors"
+              className="p-2 text-[#94a3b8] hover:text-white hover:bg-[#131b28] rounded-lg transition-colors"
               title="GitHub Profile"
             >
               <Github className="w-4 h-4" />
             </a>
             <a
-              href={`https://linkedin.com/in/${config.linkedin}`}
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#8b949e] hover:text-blue-400 hover:bg-[#161b22] rounded-lg transition-colors"
+              className="p-2 text-[#94a3b8] hover:text-sky-400 hover:bg-[#131b28] rounded-lg transition-colors"
               title="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${config.email}`}
-              className="p-2 text-[#8b949e] hover:text-emerald-400 hover:bg-[#161b22] rounded-lg transition-colors"
+              className="p-2 text-[#94a3b8] hover:text-emerald-400 hover:bg-[#131b28] rounded-lg transition-colors"
               title="Send Email"
             >
               <Mail className="w-4 h-4" />

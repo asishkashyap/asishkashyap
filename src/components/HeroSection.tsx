@@ -16,6 +16,7 @@ import {
   Check
 } from 'lucide-react';
 import { ProfileConfig } from '../types';
+import { formatLinkedInUrl } from '../utils/urlUtils';
 
 interface HeroSectionProps {
   config: ProfileConfig;
@@ -31,11 +32,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
+  const linkedinUrl = formatLinkedInUrl(config.linkedin);
+
   return (
     <section id="about" className="relative py-12 md:py-20 overflow-hidden">
-      {/* Background Subtle Glowing Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[250px] bg-indigo-600/10 blur-[100px] rounded-full pointer-events-none -z-10" />
+      {/* Background Subtle Soothing Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-sky-600/10 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-10 w-[500px] h-[300px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -44,7 +47,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
           <div className="lg:col-span-8 space-y-6">
             
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-mono backdrop-blur-sm">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -54,34 +57,34 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
 
             {/* Name & Title */}
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#f0f6fc] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#f8fafc] tracking-tight">
                 {config.fullName}
               </h1>
-              <p className="mt-2 text-xl sm:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-300">
+              <p className="mt-2 text-xl sm:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-cyan-300">
                 {config.title}
               </p>
             </div>
 
             {/* Tagline & Bio */}
-            <p className="text-base sm:text-lg text-[#8b949e] max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg text-[#94a3b8] max-w-2xl leading-relaxed">
               {config.bio}
             </p>
 
             {/* Badges / Key Info Grid */}
-            <div className="flex flex-wrap gap-y-2 gap-x-4 text-xs sm:text-sm text-[#8b949e]">
-              <div className="flex items-center gap-1.5 bg-[#161b22] px-3 py-1.5 rounded-lg border border-[#30363d]">
+            <div className="flex flex-wrap gap-y-2.5 gap-x-3 text-xs sm:text-sm text-[#94a3b8]">
+              <div className="flex items-center gap-2 bg-[#131b28] px-3.5 py-2 rounded-xl border border-[#232f45] shadow-sm">
                 <MapPin className="w-4 h-4 text-rose-400" />
                 <span>{config.location}</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#161b22] px-3 py-1.5 rounded-lg border border-[#30363d]">
-                <Building2 className="w-4 h-4 text-blue-400" />
-                <span>{config.company} (6+ Yrs)</span>
+              <div className="flex items-center gap-2 bg-[#131b28] px-3.5 py-2 rounded-xl border border-[#232f45] shadow-sm">
+                <Building2 className="w-4 h-4 text-sky-400" />
+                <span>Senior DevSecOps Lead (6+ Yrs)</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#161b22] px-3 py-1.5 rounded-lg border border-[#30363d]">
+              <div className="flex items-center gap-2 bg-[#131b28] px-3.5 py-2 rounded-xl border border-[#232f45] shadow-sm">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Zero-Trust K8s & OIDC</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#161b22] px-3 py-1.5 rounded-lg border border-[#30363d]">
+              <div className="flex items-center gap-2 bg-[#131b28] px-3.5 py-2 rounded-xl border border-[#232f45] shadow-sm">
                 <Cpu className="w-4 h-4 text-purple-400" />
                 <span>Autonomous AI SRE Agents</span>
               </div>
@@ -93,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
                 href={`https://github.com/${config.username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 transition-all hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-sky-600/20 transition-all hover:scale-[1.02]"
               >
                 <Github className="w-4 h-4" />
                 <span>View GitHub Profile</span>
@@ -101,18 +104,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
               </a>
 
               <a
-                href={`https://linkedin.com/in/${config.linkedin}`}
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#161b22] hover:bg-[#21262d] text-[#f0f6fc] border border-[#30363d] font-medium text-sm px-5 py-2.5 rounded-xl transition-all hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 bg-[#131b28] hover:bg-[#1a2436] text-[#f8fafc] border border-[#232f45] font-medium text-sm px-5 py-2.5 rounded-xl transition-all hover:scale-[1.02] shadow-sm"
               >
-                <Linkedin className="w-4 h-4 text-blue-400" />
+                <Linkedin className="w-4 h-4 text-sky-400" />
                 <span>LinkedIn</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#94a3b8]" />
               </a>
 
               <button
                 onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 bg-[#161b22] hover:bg-[#21262d] text-[#f0f6fc] border border-[#30363d] font-medium text-sm px-4 py-2.5 rounded-xl transition-colors"
+                className="inline-flex items-center gap-2 bg-[#131b28] hover:bg-[#1a2436] text-[#f8fafc] border border-[#232f45] font-medium text-sm px-4 py-2.5 rounded-xl transition-colors shadow-sm"
                 title="Copy Email Address"
               >
                 {emailCopied ? (
@@ -127,7 +131,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, onNavigateToPr
 
           {/* Right Profile Identity Card */}
           <div className="lg:col-span-4">
-            <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#131b28] border border-[#232f45] rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-transparent rounded-bl-full pointer-events-none" />
               
               {/* Profile Avatar & Header */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, ArrowUp, Heart, FileCode, Shield } from 'lucide-react';
 import { ProfileConfig } from '../types';
+import { formatLinkedInUrl } from '../utils/urlUtils';
 
 interface FooterProps {
   config: ProfileConfig;
@@ -12,20 +13,22 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const linkedinUrl = formatLinkedInUrl(config.linkedin);
+
   return (
-    <footer className="bg-[#090d13] border-t border-[#30363d] text-[#8b949e] text-xs py-8 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#0b0f17] border-t border-[#232f45] text-[#94a3b8] text-xs py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
         {/* Left Branding */}
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs">
+          <div className="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center font-mono font-bold text-xs">
             AK
           </div>
           <div>
-            <p className="text-[#f0f6fc] font-semibold">
+            <p className="text-[#f8fafc] font-semibold">
               {config.fullName} &copy; {new Date().getFullYear()}
             </p>
-            <p className="text-[11px] text-[#8b949e]">
+            <p className="text-[11px] text-[#94a3b8]">
               Senior DevSecOps & AI Engineer &bull; Greater Noida, India
             </p>
           </div>
@@ -35,12 +38,12 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
         <div className="flex items-center gap-4">
           <button
             onClick={onOpenStudio}
-            className="flex items-center gap-1.5 text-[#8b949e] hover:text-blue-400 transition-colors"
+            className="flex items-center gap-1.5 text-[#94a3b8] hover:text-sky-400 transition-colors"
           >
-            <FileCode className="w-3.5 h-3.5 text-blue-400" />
+            <FileCode className="w-3.5 h-3.5 text-sky-400" />
             <span>Profile Studio & Exporter</span>
           </button>
-          <span className="text-[#30363d]">&bull;</span>
+          <span className="text-[#232f45]">&bull;</span>
           <a
             href={`https://github.com/${config.username}`}
             target="_blank"
@@ -50,12 +53,12 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
             <Github className="w-3.5 h-3.5" />
             <span>GitHub</span>
           </a>
-          <span className="text-[#30363d]">&bull;</span>
+          <span className="text-[#232f45]">&bull;</span>
           <a
-            href={`https://linkedin.com/in/${config.linkedin}`}
+            href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-colors flex items-center gap-1"
+            className="hover:text-sky-400 transition-colors flex items-center gap-1"
           >
             <Linkedin className="w-3.5 h-3.5" />
             <span>LinkedIn</span>
@@ -65,10 +68,10 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
         {/* Right Scroll Top */}
         <button
           onClick={scrollToTop}
-          className="p-2 bg-[#161b22] hover:bg-[#21262d] border border-[#30363d] text-[#f0f6fc] rounded-lg transition-colors flex items-center gap-1"
+          className="p-2 bg-[#131b28] hover:bg-[#1a2436] border border-[#232f45] text-[#f8fafc] rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
           title="Scroll to top"
         >
-          <ArrowUp className="w-3.5 h-3.5 text-blue-400" />
+          <ArrowUp className="w-3.5 h-3.5 text-sky-400" />
           <span className="text-[11px]">Back to top</span>
         </button>
 
