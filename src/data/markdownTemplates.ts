@@ -378,17 +378,15 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          token: \${{ secrets.METRICS_TOKEN }}
+          token: \${{ secrets.GITHUB_TOKEN }}
           user: \${{ github.repository_owner }}
           template: classic
           base: header, activity, community, repositories, metadata
           plugin_languages: yes
           plugin_languages_colors: github
           plugin_languages_limit: 8
-          plugin_languages_recent_categories: markup, programming
-          plugin_languages_recent_days: 14
-          plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
+          plugin_languages_details: percentage
           plugin_languages_threshold: 0%
 `;
 }
