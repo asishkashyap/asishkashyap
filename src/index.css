@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --theme-bg: #121212;
+    --theme-card-bg: #1e1e1f;
+    --theme-card-border: #383838;
+    --theme-text-primary: #fafafa;
+    --theme-text-secondary: #d6d6d6;
+    --theme-accent: #ffdb70;
+    --theme-accent-glow: rgba(255, 219, 112, 0.15);
+    --theme-badge-bg: #2b2b2c;
+    --theme-badge-text: #ffdb70;
+  }
+
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-secondary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Custom Styled Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-card-bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-card-border);
+  border-radius: 10px;
+  border: 2px solid var(--theme-card-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent);
+}
+
+/* Section Title Custom Underline */
+.vcard-title-heading {
+  position: relative;
+  color: var(--theme-text-primary);
+  padding-bottom: 0.75rem;
+}
+
+.vcard-title-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 0.25rem;
+  background: var(--theme-accent);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+/* Glass & Card Gradients */
+.vcard-card-gradient {
+  background: linear-gradient(to bottom right, var(--theme-badge-bg) 0%, var(--theme-card-bg) 100%);
+}
+
+.vcard-border {
+  border: 1px solid var(--theme-card-border);
+}
+
+.vcard-gold-glow {
+  box-shadow: 0 0 20px var(--theme-accent-glow);
+}

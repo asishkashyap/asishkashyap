@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, ArrowUp, Heart, FileCode, Shield } from 'lucide-react';
+import { Github, Linkedin, ArrowUp, FileCode } from 'lucide-react';
 import { ProfileConfig } from '../types';
 import { formatLinkedInUrl } from '../utils/urlUtils';
 
@@ -16,19 +16,19 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
   const linkedinUrl = formatLinkedInUrl(config.linkedin);
 
   return (
-    <footer className="bg-[#0b0f17] border-t border-[#232f45] text-[#94a3b8] text-xs py-8 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#121212] border-t border-[#383838] text-[#9f9f9f] text-xs py-8 px-4 sm:px-6 lg:px-8 mt-12">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
         {/* Left Branding */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center justify-center font-mono font-bold text-xs">
+          <div className="w-8 h-8 rounded-xl bg-[#2b2b2c] border border-[#383838] text-[#ffdb70] flex items-center justify-center font-mono font-bold text-xs shadow-md">
             AK
           </div>
           <div>
-            <p className="text-[#f8fafc] font-semibold">
+            <p className="text-[#fafafa] font-semibold">
               {config.fullName} &copy; {new Date().getFullYear()}
             </p>
-            <p className="text-[11px] text-[#94a3b8]">
+            <p className="text-[11px] text-[#9f9f9f]">
               Senior DevSecOps & AI Engineer &bull; Greater Noida, India
             </p>
           </div>
@@ -38,27 +38,27 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
         <div className="flex items-center gap-4">
           <button
             onClick={onOpenStudio}
-            className="flex items-center gap-1.5 text-[#94a3b8] hover:text-sky-400 transition-colors"
+            className="flex items-center gap-1.5 text-[#d6d6d6] hover:text-[#ffdb70] transition-colors font-medium"
           >
-            <FileCode className="w-3.5 h-3.5 text-sky-400" />
-            <span>Profile Studio & Exporter</span>
+            <FileCode className="w-3.5 h-3.5 text-[#ffdb70]" />
+            <span>Profile Studio</span>
           </button>
-          <span className="text-[#232f45]">&bull;</span>
+          <span className="text-[#383838]">&bull;</span>
           <a
             href={`https://github.com/${config.username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors flex items-center gap-1"
+            className="text-[#d6d6d6] hover:text-[#ffdb70] transition-colors flex items-center gap-1 font-medium"
           >
             <Github className="w-3.5 h-3.5" />
             <span>GitHub</span>
           </a>
-          <span className="text-[#232f45]">&bull;</span>
+          <span className="text-[#383838]">&bull;</span>
           <a
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-sky-400 transition-colors flex items-center gap-1"
+            className="text-[#d6d6d6] hover:text-[#ffdb70] transition-colors flex items-center gap-1 font-medium"
           >
             <Linkedin className="w-3.5 h-3.5" />
             <span>LinkedIn</span>
@@ -68,10 +68,10 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenStudio }) => {
         {/* Right Scroll Top */}
         <button
           onClick={scrollToTop}
-          className="p-2 bg-[#131b28] hover:bg-[#1a2436] border border-[#232f45] text-[#f8fafc] rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
+          className="p-2 bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] text-[#fafafa] rounded-xl transition-colors flex items-center gap-1.5 shadow-md font-medium"
           title="Scroll to top"
         >
-          <ArrowUp className="w-3.5 h-3.5 text-sky-400" />
+          <ArrowUp className="w-3.5 h-3.5 text-[#ffdb70]" />
           <span className="text-[11px]">Back to top</span>
         </button>
 

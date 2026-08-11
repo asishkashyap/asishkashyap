@@ -47,27 +47,27 @@ export const ProfileStudioModal: React.FC<ProfileStudioModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-[#0d1117] border border-[#30363d] rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div className="bg-[#1e1e1f] border border-[#383838] rounded-3xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
         
         {/* Modal Header */}
-        <div className="bg-[#161b22] px-6 py-4 border-b border-[#30363d] flex items-center justify-between">
+        <div className="bg-[#2b2b2c] px-6 py-4 border-b border-[#383838] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 rounded-xl bg-[#1e1e1f] text-[#ffdb70] border border-[#383838] flex items-center justify-center font-bold text-sm font-mono shadow-md">
               AK
             </div>
             <div>
-              <h3 className="text-base font-bold text-[#f0f6fc]">Developer Profile Studio & Tools</h3>
-              <p className="text-xs text-[#8b949e]">Generate README markdown, export SVG assets & edit configuration</p>
+              <h3 className="text-base font-bold text-[#fafafa]">Developer Profile Studio & Tools</h3>
+              <p className="text-xs text-[#9f9f9f]">Generate README markdown, export SVG assets & edit configuration</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyReadme}
-              className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm ${
+              className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-md ${
                 copiedReadme
                   ? 'bg-emerald-600 text-white'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white'
+                  : 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212]'
               }`}
             >
               {copiedReadme ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -76,7 +76,7 @@ export const ProfileStudioModal: React.FC<ProfileStudioModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1.5 text-[#8b949e] hover:text-[#f0f6fc] hover:bg-[#21262d] rounded-lg border border-[#30363d] transition-colors"
+              className="p-1.5 text-[#9f9f9f] hover:text-[#fafafa] hover:bg-[#383838] rounded-xl border border-[#383838] transition-colors"
               title="Close Modal"
             >
               <X className="w-5 h-5" />
@@ -85,7 +85,7 @@ export const ProfileStudioModal: React.FC<ProfileStudioModalProps> = ({
         </div>
 
         {/* Studio Sub-Navigation Tabs */}
-        <div className="bg-[#161b22]/50 border-b border-[#30363d] px-6 py-2 overflow-x-auto no-scrollbar">
+        <div className="bg-[#121212] border-b border-[#383838] px-6 py-2 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-1 min-w-max">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -93,10 +93,10 @@ export const ProfileStudioModal: React.FC<ProfileStudioModalProps> = ({
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors ${
+                  className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl transition-colors ${
                     activeTab === tab.id
-                      ? 'bg-blue-600 text-white shadow'
-                      : 'text-[#8b949e] hover:text-[#f0f6fc] hover:bg-[#21262d]'
+                      ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-md'
+                      : 'text-[#9f9f9f] hover:text-[#fafafa] hover:bg-[#2b2b2c]'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -108,7 +108,7 @@ export const ProfileStudioModal: React.FC<ProfileStudioModalProps> = ({
         </div>
 
         {/* Modal Main Content Container */}
-        <div className="p-6 overflow-y-auto flex-1 text-[#f0f6fc]">
+        <div className="p-6 overflow-y-auto flex-1 text-[#d6d6d6]">
           {activeTab === 'preview' && (
             <LiveReadmePreview
               config={config}
