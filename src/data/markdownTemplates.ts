@@ -19,7 +19,7 @@ export function generateMainReadme(config: ProfileConfig): string {
     categorized[cat].push(`![${item.name}](https://img.shields.io/badge/${encodeURIComponent(item.name)}-${item.bgColor}?style=for-the-badge&logo=${item.logo}&logoColor=${item.logoColor})`);
   });
 
-  const siteDisplay = (config.website || 'https://asishkashyap.com').replace(/^https?:\/\//, '').replace(/\/$/, '').toUpperCase();
+  const siteDisplay = (config.website || 'https://asishkashyap.github.io').replace(/^https?:\/\//, '').replace(/\/$/, '').toUpperCase();
 
   const badgesSection = Object.entries(categorized).map(([cat, badges]) => `
 ### 🔸 ${cat}
