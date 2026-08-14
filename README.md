@@ -22,6 +22,7 @@
 <br />
 
 <!-- CTA Badges Matrix -->
+[![Live Portfolio Website](https://img.shields.io/badge/🌐_Explore_Interactive_Portfolio_Website-asishkashyap.github.io-ffdb70?style=for-the-badge&logo=googlechrome&logoColor=121212&labelColor=1e1e1f)](https://asishkashyap.github.io/asishkashyap/)
 [![Website](https://img.shields.io/badge/Website-asishkashyap.com-58a6ff?style=for-the-badge&logo=googlechrome&logoColor=white)](https://asishkashyap.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-asishkashyap-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/asishkashyap)
 [![X/Twitter](https://img.shields.io/badge/X%2FTwitter-%40asishkashyap1-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://x.com/asishkashyap1)
