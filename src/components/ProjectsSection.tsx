@@ -61,34 +61,51 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
         </div>
       </div>
 
-      {/* Topic Tag Chips */}
+      {/* Topic Tag Chips with Sliding Pill */}
       <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
         <span className="text-xs text-[#9f9f9f] font-mono mr-1 shrink-0 flex items-center gap-1">
           <Tag className="w-3 h-3 text-[#ffdb70]" /> Filter:
         </span>
         <button
           onClick={() => setSelectedTopic('All')}
-          className={`text-xs px-3 py-1 rounded-xl transition-all shrink-0 ${
+          className={`relative text-xs px-3 py-1 rounded-xl transition-colors shrink-0 ${
             selectedTopic === 'All'
-              ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-md'
+              ? 'text-[#121212] font-bold'
               : 'bg-[#2b2b2c] text-[#d6d6d6] hover:text-[#ffdb70] border border-[#383838]'
           }`}
         >
+          {selectedTopic === 'All' && (
+            <motion.div
+              layoutId="activeTopicPill"
+              className="absolute inset-0 bg-gradient-to-r from-[#ffdb70] to-[#e2b714] rounded-xl shadow-md -z-10"
+              transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+            />
+          )}
           All Projects
         </button>
-        {allTopics.slice(0, 10).map((topic) => (
-          <button
-            key={topic}
-            onClick={() => setSelectedTopic(topic)}
-            className={`text-xs px-2.5 py-1 rounded-xl transition-all shrink-0 font-mono ${
-              selectedTopic === topic
-                ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-md'
-                : 'bg-[#2b2b2c] text-[#d6d6d6] hover:text-[#ffdb70] border border-[#383838]'
-            }`}
-          >
-            #{topic}
-          </button>
-        ))}
+        {allTopics.slice(0, 10).map((topic) => {
+          const isSelected = selectedTopic === topic;
+          return (
+            <button
+              key={topic}
+              onClick={() => setSelectedTopic(topic)}
+              className={`relative text-xs px-2.5 py-1 rounded-xl transition-colors shrink-0 font-mono ${
+                isSelected
+                  ? 'text-[#121212] font-bold'
+                  : 'bg-[#2b2b2c] text-[#d6d6d6] hover:text-[#ffdb70] border border-[#383838]'
+              }`}
+            >
+              {isSelected && (
+                <motion.div
+                  layoutId="activeTopicPill"
+                  className="absolute inset-0 bg-gradient-to-r from-[#ffdb70] to-[#e2b714] rounded-xl shadow-md -z-10"
+                  transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+                />
+              )}
+              #{topic}
+            </button>
+          );
+        })}
       </div>
 
       {/* Repositories Cards Grid */}
@@ -96,16 +113,22 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
         {filteredRepos.map((repo, idx) => (
           <motion.div
             key={repo.name}
+            layout
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: Math.min(idx * 0.08, 0.35) }}
-            className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/60 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all hover:-translate-y-0.5 shadow-lg group relative overflow-hidden"
+            whileHover={{ 
+              y: -5, 
+              boxShadow: '0 12px 30px -8px rgba(255, 219, 112, 0.22)',
+              transition: { duration: 0.2 } 
+            }}
+            className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/70 rounded-2xl p-5 flex flex-col justify-between gap-4 shadow-lg group relative overflow-hidden transition-colors"
           >
             {/* Badge Overlay */}
             {repo.badge && (
-              <div className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-xl bg-[#1e1e1f] text-[#ffdb70] border border-[#383838] self-start shadow-sm">
-                {repo.badge}
+              <div className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-xl bg-[#1e1e1f] text-[#ffdb70] border border-[#383838] self-start shadow-sm flex items-center gap-1">
+                <span>{repo.badge}</span>
               </div>
             )}
 
@@ -118,18 +141,20 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
                   rel="noopener noreferrer"
                   className="text-base font-bold text-[#fafafa] group-hover:text-[#ffdb70] transition-colors flex items-center gap-1.5"
                 >
-                  <FolderGit2 className="w-4 h-4 text-[#ffdb70] shrink-0" />
+                  <FolderGit2 className="w-4 h-4 text-[#ffdb70] shrink-0 group-hover:rotate-6 transition-transform" />
                   <span className="truncate">{repo.name}</span>
                 </a>
-                <a
+                <motion.a
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 text-[#9f9f9f] hover:text-[#fafafa] bg-[#1e1e1f] rounded-xl border border-[#383838] shrink-0"
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-1.5 text-[#9f9f9f] hover:text-[#ffdb70] bg-[#1e1e1f] hover:border-[#ffdb70]/50 rounded-xl border border-[#383838] shrink-0 transition-colors"
                   title="View Repo"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                </motion.a>
               </div>
 
               <p className="text-xs text-[#9f9f9f] line-clamp-3 leading-relaxed">

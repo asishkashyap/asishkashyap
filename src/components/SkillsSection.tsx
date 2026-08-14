@@ -38,22 +38,32 @@ export const SkillsSection: React.FC = () => {
         </p>
       </div>
 
-      {/* Category Filter Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar bg-[#2b2b2c] p-1.5 rounded-2xl border border-[#383838]">
+      {/* Category Filter Tabs with Morphing Sliding Indicator */}
+      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-[#2b2b2c] p-1.5 rounded-2xl border border-[#383838]">
         <Filter className="w-3.5 h-3.5 text-[#ffdb70] ml-2 shrink-0" />
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-all shrink-0 ${
-              selectedCategory === cat
-                ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-md'
-                : 'text-[#d6d6d6] hover:text-[#ffdb70] hover:bg-[#383838]'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+        {categories.map((cat) => {
+          const isSelected = selectedCategory === cat;
+          return (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`relative text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-colors shrink-0 ${
+                isSelected
+                  ? 'text-[#121212] font-bold'
+                  : 'text-[#d6d6d6] hover:text-[#fafafa]'
+              }`}
+            >
+              {isSelected && (
+                <motion.div
+                  layoutId="activeCategoryPill"
+                  className="absolute inset-0 bg-gradient-to-r from-[#ffdb70] to-[#e2b714] rounded-xl shadow-md -z-10"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span>{cat}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Tech Stack Grid */}
@@ -61,15 +71,23 @@ export const SkillsSection: React.FC = () => {
         {filteredTech.map((tech, idx) => (
           <motion.div
             key={tech.name}
+            layout
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.25, delay: Math.min(idx * 0.02, 0.25) }}
-            className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/50 rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 transition-all hover:scale-[1.02] group shadow-md"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -3,
+              boxShadow: '0 8px 24px -6px rgba(255, 219, 112, 0.25)',
+              transition: { duration: 0.15 } 
+            }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/70 rounded-2xl p-3.5 flex flex-col items-center justify-center gap-2 transition-colors group shadow-md cursor-default"
           >
             <img
               src={`https://img.shields.io/badge/${encodeURIComponent(tech.name)}-0d1117?style=flat-square&logo=${tech.logo}&logoColor=${tech.logoColor}`}
               alt={tech.name}
-              className="h-6 object-contain"
+              className="h-6 object-contain group-hover:scale-110 transition-transform duration-200"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { VCardSidebar } from './components/VCardSidebar';
 import { HeroSection } from './components/HeroSection';
@@ -16,6 +17,15 @@ export default function App() {
   const [config, setConfig] = useState(DEFAULT_PROFILE);
   const [studioModalOpen, setStudioModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'about' | 'terminal' | 'skills' | 'projects' | 'metrics' | 'contact'>('about');
+  const [mousePosition, setMousePosition] = useState({ x: -500, y: -500 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const currentTheme = THEMES[config.theme] || THEMES.darkSlate;
@@ -57,7 +67,24 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] font-sans selection:bg-[var(--theme-accent)]/20 selection:text-[var(--theme-accent)] transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] font-sans selection:bg-[var(--theme-accent)]/20 selection:text-[var(--theme-accent)] transition-colors duration-300 relative overflow-hidden">
+      {/* Dynamic Ambient Mouse Radial Glow */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300 opacity-60"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, var(--theme-accent-glow), transparent 70%)`,
+        }}
+      />
+
+      {/* Subtle Cyber Matrix / Grid Background Pattern */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-0 opacity-[0.035]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)`,
+          backgroundSize: '28px 28px'
+        }}
+      />
+
       {/* Top Header Navigation */}
       <Navbar
         config={config}
@@ -66,17 +93,17 @@ export default function App() {
       />
 
       {/* Main Page Layout Wrapper */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex flex-col lg:flex-row items-start gap-8 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 flex flex-col lg:flex-row items-start gap-8 relative z-10">
         
         {/* Left Sticky/Collapsible vCard Sidebar */}
         <VCardSidebar config={config} />
 
         {/* Right Main Content vCard Card */}
-        <main className="bg-[var(--theme-card-bg)] border border-[var(--theme-card-border)] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl relative flex-1 min-w-0 w-full space-y-14 transition-colors duration-300">
+        <main className="bg-[var(--theme-card-bg)] border border-[var(--theme-card-border)] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl relative flex-1 min-w-0 w-full space-y-14 transition-colors duration-300 backdrop-blur-sm">
           
-          {/* Top Embedded Navbar inside Main Card */}
+          {/* Top Embedded Navbar inside Main Card with Animated Sliding Highlight */}
           <div className="flex items-center justify-between border-b border-[var(--theme-card-border)] pb-4 mb-6 overflow-x-auto no-scrollbar">
-            <nav className="flex items-center gap-1 sm:gap-2">
+            <nav className="flex items-center gap-1 sm:gap-2 relative">
               {navTabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -84,12 +111,19 @@ export default function App() {
                   <button
                     key={tab.id}
                     onClick={() => scrollToSection(tab.id)}
-                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-semibold transition-all shrink-0 ${
+                    className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-semibold transition-colors shrink-0 ${
                       isActive
-                        ? 'text-[var(--theme-accent)] bg-[var(--theme-badge-bg)] border border-[var(--theme-card-border)] shadow-md font-bold'
-                        : 'text-[#9f9f9f] hover:text-[var(--theme-text-primary)] hover:bg-[var(--theme-badge-bg)]/60'
+                        ? 'text-[var(--theme-accent)] font-bold'
+                        : 'text-[#9f9f9f] hover:text-[var(--theme-text-primary)]'
                     }`}
                   >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTabIndicator"
+                        className="absolute inset-0 bg-[var(--theme-badge-bg)] border border-[var(--theme-card-border)] rounded-2xl shadow-md -z-10"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
                     <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[var(--theme-accent)]' : 'text-[#9f9f9f]'}`} />
                     <span>{tab.label}</span>
                   </button>

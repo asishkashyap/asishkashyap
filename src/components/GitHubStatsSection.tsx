@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { BarChart3, Activity, Code, Flame, Sparkles, TrendingUp, Grid } from 'lucide-react';
+import { BarChart3, Activity, Code, Flame, Sparkles, TrendingUp, Grid, GitCommit, FolderGit2, CheckCircle2 } from 'lucide-react';
 import { ProfileConfig } from '../types';
+import { AnimatedCounter } from './AnimatedCounter';
 
 interface GitHubStatsSectionProps {
   config: ProfileConfig;
@@ -25,6 +26,13 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
   const activityGraphUrl = `https://github-readme-activity-graph.vercel.app/graph?username=${config.username}&theme=github-dark&bg_color=1e1e1f&color=ffdb70&line=ffdb70&point=e2b714&area=true&hide_border=true`;
   const ghChartUrl = `https://ghchart.rshah.org/ffdb70/${config.username}`;
 
+  const summaryStats = [
+    { label: 'Total Contributions', count: 1850, suffix: '+', icon: GitCommit, color: 'text-[#ffdb70]' },
+    { label: 'Public Repositories', count: 24, suffix: '', icon: FolderGit2, color: 'text-sky-400' },
+    { label: 'Max Commit Streak', count: 48, suffix: ' Days', icon: Flame, color: 'text-amber-400' },
+    { label: 'Uptime & Reliability', count: 99, suffix: '.9%', icon: CheckCircle2, color: 'text-emerald-400' },
+  ];
+
   return (
     <motion.section
       id="metrics"
@@ -44,6 +52,32 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
         </p>
       </div>
 
+      {/* Animated Counter Summary Badges */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {summaryStats.map((stat, i) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: i * 0.06 }}
+              whileHover={{ y: -3, transition: { duration: 0.15 } }}
+              className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/50 rounded-2xl p-3.5 flex flex-col justify-between shadow-md transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] text-[#9f9f9f] font-mono">{stat.label}</span>
+                <Icon className={`w-3.5 h-3.5 ${stat.color}`} />
+              </div>
+              <div className="text-lg sm:text-xl font-extrabold text-[#fafafa] mt-2 font-mono">
+                <AnimatedCounter value={stat.count} suffix={stat.suffix} />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
       {/* Metrics Widgets Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         
@@ -54,7 +88,8 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/60 transition-colors"
           >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
@@ -85,7 +120,8 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12 }}
-            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/60 transition-colors"
           >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
@@ -116,7 +152,8 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.19 }}
-            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/60 transition-colors"
           >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
@@ -153,41 +190,37 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
               </h3>
             </div>
 
-            {/* View Switcher Tabs */}
-            <div className="flex items-center gap-1 bg-[#2b2b2c] p-1 rounded-xl border border-[#383838]">
-              <button
-                onClick={() => setActiveGraph('snake')}
-                className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all ${
-                  activeGraph === 'snake'
-                    ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-sm'
-                    : 'text-[#9f9f9f] hover:text-[#fafafa]'
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Snake Grid</span>
-              </button>
-              <button
-                onClick={() => setActiveGraph('activity')}
-                className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all ${
-                  activeGraph === 'activity'
-                    ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-sm'
-                    : 'text-[#9f9f9f] hover:text-[#fafafa]'
-                }`}
-              >
-                <TrendingUp className="w-3.5 h-3.5" />
-                <span>3D Trend</span>
-              </button>
-              <button
-                onClick={() => setActiveGraph('heatmap')}
-                className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all ${
-                  activeGraph === 'heatmap'
-                    ? 'bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold shadow-sm'
-                    : 'text-[#9f9f9f] hover:text-[#fafafa]'
-                }`}
-              >
-                <Grid className="w-3.5 h-3.5" />
-                <span>Contribution Heatmap</span>
-              </button>
+            {/* View Switcher Tabs with Animated Sliding Pill */}
+            <div className="flex items-center gap-1 bg-[#2b2b2c] p-1 rounded-xl border border-[#383838] relative">
+              {[
+                { id: 'snake', label: 'Snake Grid', icon: Sparkles },
+                { id: 'activity', label: '3D Trend', icon: TrendingUp },
+                { id: 'heatmap', label: 'Contribution Heatmap', icon: Grid },
+              ].map((tab) => {
+                const Icon = tab.icon;
+                const isSelected = activeGraph === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveGraph(tab.id as any)}
+                    className={`relative flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-colors ${
+                      isSelected
+                        ? 'text-[#121212] font-bold'
+                        : 'text-[#9f9f9f] hover:text-[#fafafa]'
+                    }`}
+                  >
+                    {isSelected && (
+                      <motion.div
+                        layoutId="activeGraphTab"
+                        className="absolute inset-0 bg-gradient-to-r from-[#ffdb70] to-[#e2b714] rounded-lg shadow-sm -z-10"
+                        transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+                      />
+                    )}
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -239,3 +272,4 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
     </motion.section>
   );
 };
+

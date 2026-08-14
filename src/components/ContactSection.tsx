@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Send, Mail, Linkedin, Twitter, Github, Check, MapPin, Building2, Sparkles, MessageSquare } from 'lucide-react';
 import { ProfileConfig } from '../types';
 import { formatLinkedInUrl } from '../utils/urlUtils';
@@ -36,7 +37,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
   };
 
   return (
-    <section id="contact" className="space-y-6">
+    <motion.section
+      id="contact"
+      className="space-y-6"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.55 }}
+    >
       <div>
         <h2 className="text-2xl sm:text-3xl font-bold text-[#fafafa] vcard-title-heading">
           Contact & Collaboration
@@ -49,7 +57,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Left Direct Channels Card */}
-        <div className="lg:col-span-5 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="lg:col-span-5 space-y-4"
+        >
           <div className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-5 space-y-4 shadow-xl">
             <h3 className="text-sm font-bold text-[#fafafa] flex items-center gap-2">
               <Mail className="w-4 h-4 text-[#ffdb70]" /> Direct Contact Information
@@ -62,12 +76,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
                   <p className="text-[10px] text-[#9f9f9f] uppercase font-mono">Email Address</p>
                   <p className="font-semibold text-[#fafafa] font-mono truncate">{config.email}</p>
                 </div>
-                <button
+                <motion.button
                   onClick={handleCopyEmail}
-                  className="px-2.5 py-1.5 bg-[#1e1e1f] hover:bg-[#383838] border border-[#383838] text-xs text-[#ffdb70] rounded-xl font-semibold transition-colors shrink-0"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-2.5 py-1.5 bg-[#1e1e1f] hover:bg-[#383838] hover:border-[#ffdb70]/50 border border-[#383838] text-xs text-[#ffdb70] rounded-xl font-semibold transition-colors shrink-0"
                 >
                   {copiedEmail ? 'Copied' : 'Copy'}
-                </button>
+                </motion.button>
               </div>
 
               {/* Location */}
@@ -91,39 +107,51 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
 
             {/* Social Buttons */}
             <div className="pt-2 flex flex-wrap gap-2 border-t border-[#383838]">
-              <a
+              <motion.a
                 href={`https://github.com/${config.username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] hover:border-[#ffdb70]/50 text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] hover:border-[#ffdb70]/50 text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
               >
                 <Linkedin className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href={`https://twitter.com/${config.twitter}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] border border-[#383838] hover:border-[#ffdb70]/50 text-xs font-semibold text-[#d6d6d6] hover:text-[#ffdb70] transition-colors"
               >
                 <Twitter className="w-3.5 h-3.5" />
                 <span>Twitter / X</span>
-              </a>
+              </motion.a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Direct Message Form */}
-        <div className="lg:col-span-7 bg-[#1e1e1f] border border-[#383838] rounded-2xl p-5 shadow-xl space-y-4">
+        <motion.div
+          initial={{ opacity: 0, x: 16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="lg:col-span-7 bg-[#1e1e1f] border border-[#383838] rounded-2xl p-5 shadow-xl space-y-4"
+        >
           <div className="flex items-center gap-2 pb-3 border-b border-[#383838]">
             <MessageSquare className="w-4 h-4 text-[#ffdb70]" />
             <h3 className="text-base font-bold text-[#fafafa]">Contact Form</h3>
@@ -187,18 +215,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ config }) => {
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold text-sm py-3 rounded-xl transition-all shadow-md hover:scale-[1.01] flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-[#ffdb70] to-[#e2b714] text-[#121212] font-bold text-sm py-3 rounded-xl transition-shadow shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>Send Message</span>
-              </button>
+              </motion.button>
             </form>
           )}
-        </div>
+        </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };

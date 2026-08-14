@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Terminal as TerminalIcon, CornerDownLeft, Trash2, Play, Sparkles } from 'lucide-react';
 import { ProfileConfig } from '../types';
 
@@ -7,6 +8,7 @@ interface InteractiveTerminalProps {
 }
 
 export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config }) => {
+  const terminalEndRef = useRef<HTMLDivElement>(null);
   const [history, setHistory] = useState<Array<{ command: string; output: React.ReactNode }>>([
     {
       command: 'whoami',
@@ -21,6 +23,10 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
     },
   ]);
   const [inputCommand, setInputCommand] = useState('');
+
+  useEffect(() => {
+    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [history]);
 
   const executeCommand = (cmd: string) => {
     const trimmed = cmd.trim().toLowerCase();
@@ -103,7 +109,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
       default:
         resultNode = (
           <p className="text-rose-400 text-xs sm:text-sm font-mono">
-            Command not recognized: "{cmd}". Type <span className="text-[#ffdb70] font-bold">help</span> or click preset buttons below.
+            Command not recognized: "{cmd}". Type <span className="text-[#ffdb70] font-bold">help</span> or click preset buttons above.
           </p>
         );
         break;
@@ -120,7 +126,14 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
   };
 
   return (
-    <section id="terminal" className="space-y-4">
+    <motion.section
+      id="terminal"
+      className="space-y-4"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.55 }}
+    >
       <div>
         <h2 className="text-2xl sm:text-3xl font-bold text-[#fafafa] vcard-title-heading">
           Interactive Terminal Shell
@@ -135,23 +148,25 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
         {/* Terminal Header Bar */}
         <div className="bg-[#2b2b2c] px-4 py-3 border-b border-[#383838] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-rose-500" />
-            <div className="w-3 h-3 rounded-full bg-amber-500" />
-            <div className="w-3 h-3 rounded-full bg-emerald-500" />
+            <div className="w-3 h-3 rounded-full bg-rose-500 hover:opacity-80 cursor-pointer transition-opacity" />
+            <div className="w-3 h-3 rounded-full bg-amber-500 hover:opacity-80 cursor-pointer transition-opacity" />
+            <div className="w-3 h-3 rounded-full bg-emerald-500 hover:opacity-80 cursor-pointer transition-opacity" />
             <span className="ml-2 text-xs text-[#fafafa] font-semibold flex items-center gap-1.5">
               <TerminalIcon className="w-3.5 h-3.5 text-[#ffdb70]" />
               {config.username}@devsecops-terminal: ~
             </span>
           </div>
 
-          <button
+          <motion.button
             onClick={() => setHistory([])}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="text-[11px] text-[#9f9f9f] hover:text-[#fafafa] flex items-center gap-1 hover:bg-[#383838] px-2 py-1 rounded-xl transition-colors"
             title="Clear Terminal"
           >
             <Trash2 className="w-3 h-3" />
             <span>Clear</span>
-          </button>
+          </motion.button>
         </div>
 
         {/* Quick Command Buttons */}
@@ -160,32 +175,42 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
             <Sparkles className="w-3 h-3 text-[#ffdb70]" /> Quick CLI:
           </span>
           {['whoami', 'skills', 'projects', 'contact', 'help'].map((cmd) => (
-            <button
+            <motion.button
               key={cmd}
               onClick={() => executeCommand(cmd)}
-              className="px-2.5 py-1 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] text-[#ffdb70] border border-[#383838] text-[11px] transition-colors shrink-0 flex items-center gap-1 font-semibold"
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-2.5 py-1 rounded-xl bg-[#2b2b2c] hover:bg-[#383838] hover:border-[#ffdb70]/50 text-[#ffdb70] border border-[#383838] text-[11px] transition-colors shrink-0 flex items-center gap-1 font-semibold"
             >
               <Play className="w-2.5 h-2.5 text-[#ffdb70]" />
               {cmd}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Terminal Screen Body */}
         <div className="p-4 sm:p-6 min-h-[200px] max-h-[360px] overflow-y-auto space-y-4">
-          {history.map((item, index) => (
-            <div key={index} className="space-y-1.5 animate-in fade-in duration-150">
-              <div className="flex items-center gap-2 text-xs sm:text-sm text-[#ffdb70]">
-                <span>{config.username}@platform:~$</span>
-                <span className="text-[#fafafa] font-bold">{item.command}</span>
-              </div>
-              <div className="pl-4 border-l-2 border-[#ffdb70]/40 py-0.5">
-                {item.output}
-              </div>
-            </div>
-          ))}
+          <AnimatePresence>
+            {history.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-1.5"
+              >
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-[#ffdb70]">
+                  <span>{config.username}@platform:~$</span>
+                  <span className="text-[#fafafa] font-bold">{item.command}</span>
+                </div>
+                <div className="pl-4 border-l-2 border-[#ffdb70]/40 py-0.5">
+                  {item.output}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
 
-          {/* Prompt Input Form */}
+          {/* Prompt Input Form with Pulsing Cursor */}
           <form onSubmit={handleFormSubmit} className="flex items-center gap-2 pt-2">
             <span className="text-xs sm:text-sm text-[#ffdb70] shrink-0">
               {config.username}@platform:~$
@@ -196,14 +221,23 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ config
               onChange={(e) => setInputCommand(e.target.value)}
               placeholder="type 'help', 'skills', or 'projects'..."
               className="w-full bg-transparent text-xs sm:text-sm text-[#fafafa] outline-none font-mono focus:ring-0 placeholder-[#9f9f9f]"
+              autoFocus
             />
-            <button type="submit" className="text-[#9f9f9f] hover:text-[#fafafa]">
+            {/* Blinking Terminal Cursor */}
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.9, repeat: Infinity, ease: 'linear' }}
+              className="w-2 h-4 bg-[#ffdb70] -ml-2 shrink-0 pointer-events-none"
+            />
+            <button type="submit" className="text-[#9f9f9f] hover:text-[#ffdb70] transition-colors p-1">
               <CornerDownLeft className="w-4 h-4" />
             </button>
           </form>
+          <div ref={terminalEndRef} />
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
+
