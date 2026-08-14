@@ -19,7 +19,21 @@ export interface TechBadge {
   logo: string;
   logoColor: string;
   bgColor: string;
-  category: 'Cloud Native & DevOps' | 'AI Systems & Backend' | 'Security, Databases & Tooling' | 'Frontend' | 'Backend' | 'Cloud & DevOps' | 'AI & ML' | 'Databases' | 'Tools';
+  category: 
+    | 'Cloud & Containers'
+    | 'Infrastructure as Code (IaC)'
+    | 'CI/CD & Automation'
+    | 'SRE & AI'
+    | 'DevSecOps'
+    | 'Cloud Native & DevOps' 
+    | 'AI Systems & Backend' 
+    | 'Security, Databases & Tooling' 
+    | 'Frontend' 
+    | 'Backend' 
+    | 'Cloud & DevOps' 
+    | 'AI & ML' 
+    | 'Databases' 
+    | 'Tools';
 }
 
 export interface FeaturedRepository {

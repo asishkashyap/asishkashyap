@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { BarChart3, Activity, Code, Flame, Sparkles, TrendingUp, Grid } from 'lucide-react';
 import { ProfileConfig } from '../types';
 
@@ -25,7 +26,14 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
   const ghChartUrl = `https://ghchart.rshah.org/ffdb70/${config.username}`;
 
   return (
-    <section id="metrics" className="space-y-6">
+    <motion.section
+      id="metrics"
+      className="space-y-6"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] }}
+    >
       {/* Section Header */}
       <div>
         <h2 className="text-2xl sm:text-3xl font-bold text-[#fafafa] vcard-title-heading">
@@ -41,7 +49,13 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
         
         {/* Main Stats Card */}
         {config.showStatsCard && (
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+          >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
                 <Activity className="w-4 h-4" /> Profile Overview
@@ -61,12 +75,18 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
                 }
               }}
             />
-          </div>
+          </motion.div>
         )}
 
         {/* Top Languages Card */}
         {config.showTopLangs && (
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.12 }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+          >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
                 <Code className="w-4 h-4" /> Top Languages
@@ -86,12 +106,18 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
                 }
               }}
             />
-          </div>
+          </motion.div>
         )}
 
         {/* Streak Stats Card */}
         {config.showStreakCard && (
-          <div className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.19 }}
+            className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-4 flex flex-col items-center justify-center shadow-lg hover:border-[#ffdb70]/50 transition-colors"
+          >
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#383838] text-xs font-bold text-[#fafafa]">
               <span className="flex items-center gap-1.5 text-[#ffdb70]">
                 <Flame className="w-4 h-4 text-[#ffdb70]" /> Commit Streak
@@ -105,14 +131,20 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
               className="w-full h-auto max-h-[175px] object-contain rounded-xl"
               loading="lazy"
             />
-          </div>
+          </motion.div>
         )}
 
       </div>
 
       {/* Contribution Graph & Snake Animation Card */}
       {config.showSnakeAnimation && (
-        <div className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-5 shadow-xl space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-[#1e1e1f] border border-[#383838] rounded-2xl p-5 shadow-xl space-y-4"
+        >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#383838] pb-3">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#ffdb70]" />
@@ -202,8 +234,8 @@ export const GitHubStatsSection: React.FC<GitHubStatsSectionProps> = ({ config }
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 };

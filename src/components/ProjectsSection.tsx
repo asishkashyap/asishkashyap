@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FolderGit2, Star, GitFork, ExternalLink, Search, Tag, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
+import { FolderGit2, Star, GitFork, ExternalLink, Search, Tag } from 'lucide-react';
 import { ProfileConfig } from '../types';
 
 interface ProjectsSectionProps {
@@ -28,7 +29,14 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
   });
 
   return (
-    <section id="projects" className="space-y-6">
+    <motion.section
+      id="projects"
+      className="space-y-6"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] }}
+    >
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
@@ -85,9 +93,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
 
       {/* Repositories Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {filteredRepos.map((repo) => (
-          <div
+        {filteredRepos.map((repo, idx) => (
+          <motion.div
             key={repo.name}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: Math.min(idx * 0.08, 0.35) }}
             className="bg-gradient-to-br from-[#2b2b2c] to-[#1e1e1f] border border-[#383838] hover:border-[#ffdb70]/60 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all hover:-translate-y-0.5 shadow-lg group relative overflow-hidden"
           >
             {/* Badge Overlay */}
@@ -159,7 +171,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
               </div>
             </div>
 
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -175,6 +187,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ config }) => {
           <ExternalLink className="w-3.5 h-3.5 text-[#ffdb70]" />
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 };
